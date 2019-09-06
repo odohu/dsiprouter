@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 #PYTHON_CMD=python3.5
 
 (( $DEBUG == 1 )) && set -x
