@@ -152,9 +152,16 @@ elif [[ "$DISTRO" == "ubuntu" ]]; then
 	export DISTRO_VER=$(grep -w "VERSION_ID" /etc/os-release | cut -d '"' -f 2)
 else
     if [ -f /etc/redhat-release ]; then
-        export DISTRO="centos"
-        export DISTRO_VER=$(cat /etc/redhat-release | cut -d ' ' -f 4 | cut -d '.' -f 1)
-    elif [ -f /etc/debian_version ]; then
+	#Check if RedHat or CentOS
+        export DISTRO=$(cat /etc/redhat-release | awk '{ print tolower($1) }')
+	if [ "$DISTRO" == "red" ]; then
+		export DISTRO="redhat"
+        	export DISTRO_VER=$(cat /etc/redhat-release | sed 's/.* \(7\).[0-9] .*/\1/')
+	elif [ "$DISTRO" == "cent" ]; then
+		export DISTRO="centos"
+        	export DISTRO_VER=$(cat /etc/redhat-release | cut -d ' ' -f 4 | cut -d '.' -f 1)
+   	fi
+     elif [ -f /etc/debian_version ]; then
         export DISTRO="debian"
         export DISTRO_VER=$(grep -w "VERSION_ID" /etc/os-release | cut -d '"' -f 2)
     fi
@@ -239,6 +246,18 @@ function validateOSInfo {
                 ;;
         esac
     elif [[ "$DISTRO" == "centos" ]]; then
+        case "$DISTRO_VER" in
+            7)
+                if [[ -z "$KAM_VERSION" ]]; then
+                    KAM_VERSION=51
+                fi
+                ;;
+            *)
+                printerr "Your Operating System Version is not supported yet. Please open an issue at https://github.com/dOpensource/dsiprouter/"
+                cleanupAndExit 1
+            ;;
+        esac
+    elif [[ "$DISTRO" == "redhat" ]]; then
         case "$DISTRO_VER" in
             7)
                 if [[ -z "$KAM_VERSION" ]]; then
