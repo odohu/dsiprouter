@@ -10,27 +10,24 @@ function install {
     # Get the default version of python enabled
     VER=`python -V 2>&1`
     VER=`echo $VER | cut -d " " -f 2`
-    # Uninstall 3.6 and install a specific version of 3.6 if already installed
-    #if [[ "$VER" =~ 3.6 ]]; then
-    #   yum install -y python3-devel
-    #if [[ "$VER" =~ 3 ]]; then
-    #   yum remove -y rs-epel-release
-    #   yum remove -y python3* python3*-libs python3*-devel python3*-pip
-    #   yum install -y https://rhel7.iuscommunity.org/ius-release.rpm
-    #   yum install -y python36u python36u-libs python36u-devel python36u-pip
-    #elif [[ "$VER" =~ 2.7 ]]; then
-    #    yum install -y python3 python3-devel
-    #fi
 
-   # Install dependencies for dSIPRouter
+    # Install dependencies for dSIPRouter
     yum install -y yum-utils
     yum --setopt=group_package_types=mandatory,default,optional groupinstall -y "Development Tools"
     yum install -y firewalld
+    
+    # Remove the python3 version that ships with the OS
     yum remove -y python3
+
+    # Install python3 from the IUS repo
     yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
     yum install -y https://rhel7.iuscommunity.org/ius-release.rpm
     yum install -y python36u python36u-libs python36u-devel python36u-pip MySQL-python
-    #yum install -y python36 python36-libs python36-devel python36-pip MySQL-python
+    
+    # Install sngrep
+    rpm -Uvh http://packages.irontec.com/rhel/7/x86_64/sngrep-1.4.6-0.el7.x86_64.rpm
+
+    # Install misc packages
     yum install -y logrotate rsyslog perl
 
     # Reset python cmd in case it was just installed
