@@ -38,7 +38,7 @@ function install {
         yum remove -y docker\*
 
 	# Workaround for an issue where container-selinux is not available without a Redhat Subscription
-	if [ "$DISTRO" == "REDHAT" ]; then
+	if [ "$DISTRO" == "redhat" ]; then
 		yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.99-1.el7_6.noarch.rpm
 	fi
         # Always use centos as the repo OS version
