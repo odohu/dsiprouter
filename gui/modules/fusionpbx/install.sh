@@ -33,10 +33,16 @@ function install {
 #        curl http://curl.haxx.se/ca/cacert.pem -o ${CA_CERT_DIR}/ca-bundle.crt
 #        update-ca-trust force-enable
 #        update-ca-trust extract
-
+	
         yum install -y yum-utils device-mapper-persistent-data lvm2
         yum remove -y docker\*
-        yum-config-manager -y --add-repo https://download.docker.com/linux/${DISTRO}/docker-ce.repo
+
+	# Workaround for an issue where container-selinux is not available without a Redhat Subscription
+	if [ "$DISTRO" == "REDHAT" ]; then
+		yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.99-1.el7_6.noarch.rpm
+	fi
+        # Always use centos as the repo OS version
+        yum-config-manager -y --add-repo https://download.docker.com/linux/centos/docker-ce.repo
         yum-config-manager -y --enable docker-ce-stable
         yum install -y docker-ce
 
