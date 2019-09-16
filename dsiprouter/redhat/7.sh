@@ -17,12 +17,13 @@ function install {
     yum install -y firewalld
     
     # Remove the python3 version that ships with the OS
-    yum remove -y python3
+    yum remove -y python3* python3*-libs python3*-devel python3*-pip
 
     # Install python3 from the IUS repo
     yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
     yum install -y https://rhel7.iuscommunity.org/ius-release.rpm
     yum install -y python36u python36u-libs python36u-devel python36u-pip MySQL-python
+    yum install -y python-psycopg2
     
     # Install sngrep
     rpm -Uvh http://packages.irontec.com/rhel/7/x86_64/sngrep-1.4.6-0.el7.x86_64.rpm
