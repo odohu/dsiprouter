@@ -449,10 +449,19 @@ function configureSSL {
     ## Configure self signed certificate
  
     CERT_DIR=${DSIP_SYSTEM_CONFIG_DIR}/certs
-    mkdir -p ${CERT_DIR}
-    openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out ${CERT_DIR}/dsiprouter.crt -keyout ${CERT_DIR}/dsiprouter.key -subj "/C=US/ST=MI/L=Detroit/O=dSIPRouter/CN=`hostname`"
-    chown root:kamailio ${CERT_DIR}/dsiprouter*
-    chmod g=+r ${CERT_DIR}/dsiprouter*
+    
+    # Configure Self-Signed Certs if no certs exist already
+    if [ -f "${CERT_DIR}/dsiprouter.crt"  -a  -f "${CERT_DIR}/dsiprouter.key" ]; then
+            printwarn "Certificate found in ${CERT_DIR} - using it"
+    	    chown root:kamailio ${CERT_DIR}/dsiprouter*
+            chmod g=+r ${CERT_DIR}/dsiprouter*
+    else
+	    printdbg "Generating dSIPRouter Self-Signed Certificates"
+    	    mkdir -p ${CERT_DIR}
+   	    openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out ${CERT_DIR}/dsiprouter.crt -keyout ${CERT_DIR}/dsiprouter.key -subj "/C=US/ST=MI/L=Detroit/O=dSIPRouter/CN=`hostname`"
+    	    chown root:kamailio ${CERT_DIR}/dsiprouter*
+            chmod g=+r ${CERT_DIR}/dsiprouter*
+    fi
 }
 
 # updates and settings in kam config that may change
@@ -895,18 +904,13 @@ function installKamailio {
         return
     fi
 
-    # Configure Self-Signed Certs if no certs exist already
-    if [ -f "${DSIP_SYSTEM_CONFIG_DIR}/certs/dsiprouter.crt"  -a  -f "${DSIP_SYSTEM_CONFIG_DIR}/certs/dsiprouter.key" ]; then
-            printwarn "Certificate found in ${DSIP_SYSTEM_CONFIG_DIR}/certs/ - using it"
-    else
-	    printdbg "Generating dSIPRouter Self-Signed Certificates"
-	    configureSSL
-    fi
 
 
     printdbg "Attempting to install Kamailio..."
     ./kamailio/${DISTRO}/${DISTRO_VER}.sh install ${KAM_VERSION} ${DSIP_PORT}
     if [ $? -eq 0 ]; then
+	#Configure Certs 
+	configureSSL
         # configure kamailio settings
         configureKamailio
         echo "Configuring Kamailio service"
