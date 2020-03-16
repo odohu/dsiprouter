@@ -896,11 +896,11 @@ function installKamailio {
     fi
 
     # Configure Self-Signed Certs if no certs exist already
-    if [ [ ! -f "${DSIP_SYSTEM_CONFIG_DIR}/certs/dsiprouter.crt" ] && [ ! -f "${DSIP_SYSTEM_CONFIG_DIR}/certs/dsiprouter.key" ] ]; then
+    if [ -f "${DSIP_SYSTEM_CONFIG_DIR}/certs/dsiprouter.crt"  -a  -f "${DSIP_SYSTEM_CONFIG_DIR}/certs/dsiprouter.key" ]; then
+            printwarn "Certificate found in ${DSIP_SYSTEM_CONFIG_DIR}/certs/ - using it"
+    else
 	    printdbg "Generating dSIPRouter Self-Signed Certificates"
 	    configureSSL
-    else
-            printwarn "Certificate found in ${DSIP_SYSTEM_CONFIG_DIR}/certs/ - using it"
     fi
 
 
