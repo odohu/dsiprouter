@@ -29,7 +29,7 @@ function install {
     apt-get update -y
 
     # Install Kamailio packages
-    apt-get install -y --allow-unauthenticated --force-yes firewalld kamailio kamailio-mysql-modules mysql-server
+    apt-get install -y --allow-unauthenticated --force-yes firewalld kamailio kamailio-mysql-modules mysql-server kamailio-tls-modules kamailio-websocket-modules
 
     # Enable MySQL and Kamailio for system startup
     systemctl enable mysql
@@ -87,6 +87,8 @@ EOF
     # Firewall settings
     firewall-cmd --zone=public --add-port=${KAM_SIP_PORT}/udp --permanent
     firewall-cmd --zone=public --add-port=${KAM_SIP_PORT}/tcp --permanent
+    firewall-cmd --zone=public --add-port=${KAM_TLS_PORT}/tcp --permanent
+    firewall-cmd --zone=public --add-port=${KAM_WSS_PORT}/tcp --permanent
     firewall-cmd --zone=public --add-port=${RTP_PORT_MIN}-${RTP_PORT_MAX}/udp
     firewall-cmd --reload
 
