@@ -126,14 +126,14 @@ EOF
     # TODO: we should set STORE_PLAINTEXT_PW to 0, this is not default but would need tested
     (cat << EOF
 DBENGINE=MYSQL
-DBHOST="${KAM_DB_HOST}"
-DBPORT="${KAM_DB_PORT}"
-DBNAME="${KAM_DB_NAME}"
-DBROUSER="${KAM_DB_USER}"
-DBROPW="${KAM_DB_PASS}"
-DBRWUSER="${KAM_DB_USER}"
-DBRWPW="${KAM_DB_PASS}"
-DBROOTUSER="${MYSQL_ROOT_USERNAME}"
+DBHOST="localhost"
+DBPORT="3306"
+DBNAME="kamailio"
+DBROUSER="kamailio"
+DBROPW="kamailiorw"
+DBRWUSER="kamailio"
+DBRWPW="kamailiorw"
+DBROOTUSER="root"
 ${ROOTPW_SETTING}
 CHARSET=utf8
 INSTALL_EXTRA_TABLES=yes
