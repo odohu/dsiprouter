@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.2. dsiprouter &mdash; dSIPRouter 0.64 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.3. globals" href="globals.html" />
+    <link rel="prev" title="2.1. database" href="database.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> dSIPRouter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.64
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1.  User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user/installing.html">1.2.1. Installing dSIPRouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/command_line_options.html">1.3.1. Command Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/configuring.html">1.4.1. Configuring dSIPRouter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user/carrier_groups.html">1.4.1.1. Carrier Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/carrier_groups.html#adding-a-carrier">1.4.1.2. Adding a Carrier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/pbxs_and_endpoints.html">1.4.1.3. PBX(s) and Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/pbxs_and_endpoints.html#inbound-did-mapping">1.4.1.4. Inbound DID Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/domains.html">1.4.1.5. Adding a Domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/global_outbound_routes.html">1.4.1.6. Global Outbound Routes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user/api.html">1.5.1. API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/use-cases.html">1.6.1. Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/resources.html">1.7.1. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/supported_configurations.html">1.8.1. Supported Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/troubleshooting.html">1.9.1. Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/upgrade.html">1.10.1. Upgrading dSIPRouter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user/upgrade_0.522_to_0.523.html">1.10.1.1.1. Upgrade dSIPRouter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/upgrade_0.50_to_0.51.html">1.10.1.2.1. Upgrade dSIPRouter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/upgrade_0.621_to_0.63.html">1.10.1.3.1. Upgrade dSIPRouter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2.  Developer Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="database.html">2.1.  database</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2.  dsiprouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globals.html">2.3.  globals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">2.4.  modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">2.5.  settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shared.html">2.6.  shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sysloginit.html">2.7.  sysloginit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html">2.8.  util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/index.html">3.  Routes Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../routes/routes.html">3.1.  routes</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">dSIPRouter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">2. </span>The dSIPRouter Project</a> &raquo;</li>
+        
+      <li><span class="section-number">2.2. </span>dsiprouter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/dev/dsiprouter.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-dsiprouter">
+<span id="dsiprouter"></span><h1><span class="section-number">2.2. </span>dsiprouter<a class="headerlink" href="#module-dsiprouter" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="dsiprouter.addUpateOutboundRoutes">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">addUpateOutboundRoutes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#addUpateOutboundRoutes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.addUpateOutboundRoutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adding and Updating dr_rules table (outbound routes only)</p>
+<p>Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.addUpdateCarrierGroups">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">addUpdateCarrierGroups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#addUpdateCarrierGroups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.addUpdateCarrierGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add or Update a group of carriers</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.addUpdateCarriers">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">addUpdateCarriers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#addUpdateCarriers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.addUpdateCarriers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add or Update a carrier</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.addUpdateEndpointGroups">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">addUpdateEndpointGroups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#addUpdateEndpointGroups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.addUpdateEndpointGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add or Update a PBX / Endpoint</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.addUpdateInboundMapping">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">addUpdateInboundMapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#addUpdateInboundMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.addUpdateInboundMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adding and Updating of dr_rules table (inbound routes only)</p>
+<p>Partially Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.addUpdateTeleBlock">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">addUpdateTeleBlock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#addUpdateTeleBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.addUpdateTeleBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update teleblock config file settings</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.api_before_request">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">api_before_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#api_before_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.api_before_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.attrFilter">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">attrFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list</span></em>, <em class="sig-param"><span class="n">field</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#attrFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.attrFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.backupandrestore">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">backupandrestore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#backupandrestore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.backupandrestore" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.before_first_request">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">before_first_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#before_first_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.before_first_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.before_request">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">before_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#before_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.before_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.certificates">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">certificates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#certificates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.certificates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.deleteCarrierGroups">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">deleteCarrierGroups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#deleteCarrierGroups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.deleteCarrierGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a group of carriers</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.deleteCarriers">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">deleteCarriers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#deleteCarriers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.deleteCarriers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a carrier</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.deleteInboundMapping">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">deleteInboundMapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#deleteInboundMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.deleteInboundMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deleting of dr_rules table (inbound routes only)</p>
+<p>Partially Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.deleteOutboundRoute">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">deleteOutboundRoute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#deleteOutboundRoute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.deleteOutboundRoute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deleting of dr_rules table (outbound routes only)</p>
+<p>Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.deletePBX">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">deletePBX</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#deletePBX"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.deletePBX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a PBX / Endpoint</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.displayCDRS">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">displayCDRS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#displayCDRS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.displayCDRS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display Endpoint Groups / Endpoints in the view</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.displayCarrierGroups">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">displayCarrierGroups</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gwgroup</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#displayCarrierGroups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.displayCarrierGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the carrier groups in the view
+:param gwgroup:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.displayCarriers">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">displayCarriers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gwid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">gwgroup</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">newgwid</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#displayCarriers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.displayCarriers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the carriers table
+:param gwid:
+:param gwgroup:
+:param newgwid:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.displayEndpointGroups">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">displayEndpointGroups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#displayEndpointGroups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.displayEndpointGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display Endpoint Groups / Endpoints in the view</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.displayError">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">displayError</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#displayError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.displayError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.displayInboundMapping">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">displayInboundMapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#displayInboundMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.displayInboundMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displaying of dr_rules table (inbound routes only)</p>
+<p>Partially Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.displayOutboundRoutes">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">displayOutboundRoutes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#displayOutboundRoutes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.displayOutboundRoutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displaying of dr_rules table (outbound routes only)</p>
+<p>Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.displayTeleBlock">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">displayTeleBlock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#displayTeleBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.displayTeleBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display teleblock settings in view</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.domainTypeFilter">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">domainTypeFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#domainTypeFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.domainTypeFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.favicon">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">favicon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#favicon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.favicon" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.imgFilter">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">imgFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#imgFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.imgFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.importInboundMapping">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">importInboundMapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#importInboundMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.importInboundMapping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.index">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.initApp">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">initApp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">flask_app</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#initApp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.initApp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.injectReloadRequired">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">injectReloadRequired</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#injectReloadRequired"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.injectReloadRequired" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.injectSettings">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">injectSettings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#injectSettings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.injectSettings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.login">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">login</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#login"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.login" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.logout">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">logout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#logout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.logout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.noneFilter">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">noneFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#noneFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.noneFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.processInboundMappingImport">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">processInboundMappingImport</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">override_gwgroupid</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">db</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#processInboundMappingImport"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.processInboundMappingImport" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.replaceAppLoggers">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">replaceAppLoggers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">log_handler</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#replaceAppLoggers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.replaceAppLoggers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle configuration of web server loggers</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.sigHandler">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">sigHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signum</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">frame</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#sigHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.sigHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logic for trapped signals</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.syncSettings">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">syncSettings</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_fields</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">update_net</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#syncSettings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.syncSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Synchronize settings.py with shared mem / db</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_fields</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) – fields to override when syncing</p></li>
+<li><p><strong>update_net</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) – if the network settings should be updated</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.teardown">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#teardown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.teardown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dsiprouter.yesOrNoFilter">
+<code class="sig-prename descclassname">dsiprouter.</code><code class="sig-name descname">yesOrNoFilter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list</span></em>, <em class="sig-param"><span class="n">field</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dsiprouter.html#yesOrNoFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dsiprouter.yesOrNoFilter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="globals.html" class="btn btn-neutral float-right" title="2.3. globals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="database.html" class="btn btn-neutral float-left" title="2.1. database" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright dOpenSource
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,1010 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.6. shared &mdash; dSIPRouter 0.64 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.7. sysloginit" href="sysloginit.html" />
+    <link rel="prev" title="2.5. settings" href="settings.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> dSIPRouter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.64
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1.  User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user/installing.html">1.2.1. Installing dSIPRouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/command_line_options.html">1.3.1. Command Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/configuring.html">1.4.1. Configuring dSIPRouter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user/carrier_groups.html">1.4.1.1. Carrier Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/carrier_groups.html#adding-a-carrier">1.4.1.2. Adding a Carrier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/pbxs_and_endpoints.html">1.4.1.3. PBX(s) and Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/pbxs_and_endpoints.html#inbound-did-mapping">1.4.1.4. Inbound DID Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/domains.html">1.4.1.5. Adding a Domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/global_outbound_routes.html">1.4.1.6. Global Outbound Routes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user/api.html">1.5.1. API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/use-cases.html">1.6.1. Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/resources.html">1.7.1. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/supported_configurations.html">1.8.1. Supported Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/troubleshooting.html">1.9.1. Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/upgrade.html">1.10.1. Upgrading dSIPRouter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user/upgrade_0.522_to_0.523.html">1.10.1.1.1. Upgrade dSIPRouter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/upgrade_0.50_to_0.51.html">1.10.1.2.1. Upgrade dSIPRouter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/upgrade_0.621_to_0.63.html">1.10.1.3.1. Upgrade dSIPRouter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2.  Developer Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="database.html">2.1.  database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dsiprouter.html">2.2.  dsiprouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globals.html">2.3.  globals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">2.4.  modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">2.5.  settings</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.6.  shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sysloginit.html">2.7.  sysloginit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html">2.8.  util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/index.html">3.  Routes Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../routes/routes.html">3.1.  routes</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">dSIPRouter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">2. </span>The dSIPRouter Project</a> &raquo;</li>
+        
+      <li><span class="section-number">2.6. </span>shared</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/dev/shared.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-shared">
+<span id="shared"></span><h1><span class="section-number">2.6. </span>shared<a class="headerlink" href="#module-shared" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="shared.IO">
+<em class="property">class </em><code class="sig-prename descclassname">shared.</code><code class="sig-name descname">IO</code><a class="reference internal" href="../_modules/shared.html#IO"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains static methods for handling i/o operations</p>
+<dl class="py attribute">
+<dt id="shared.IO.__dict__">
+<code class="sig-name descname">__dict__</code><em class="property"> = mappingproxy({'__module__': 'shared', '__doc__': ' Contains static methods for handling i/o operations ', 'printerr': &lt;staticmethod object&gt;, 'printinfo': &lt;staticmethod object&gt;, 'printwarn': &lt;staticmethod object&gt;, 'printdbg': &lt;staticmethod object&gt;, 'printbold': &lt;staticmethod object&gt;, 'logcrit': &lt;staticmethod object&gt;, 'logerr': &lt;staticmethod object&gt;, 'loginfo': &lt;staticmethod object&gt;, 'logwarn': &lt;staticmethod object&gt;, 'logdbg': &lt;staticmethod object&gt;, 'lognolvl': &lt;staticmethod object&gt;, '__dict__': &lt;attribute '__dict__' of 'IO' objects&gt;, '__weakref__': &lt;attribute '__weakref__' of 'IO' objects&gt;})</em><a class="headerlink" href="#shared.IO.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.IO.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'shared'</em><a class="headerlink" href="#shared.IO.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.IO.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#shared.IO.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shared.IO.logcrit">
+<em class="property">static </em><code class="sig-name descname">logcrit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#IO.logcrit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO.logcrit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="shared.IO.logdbg">
+<em class="property">static </em><code class="sig-name descname">logdbg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#IO.logdbg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO.logdbg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="shared.IO.logerr">
+<em class="property">static </em><code class="sig-name descname">logerr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#IO.logerr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO.logerr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="shared.IO.loginfo">
+<em class="property">static </em><code class="sig-name descname">loginfo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#IO.loginfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO.loginfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="shared.IO.lognolvl">
+<em class="property">static </em><code class="sig-name descname">lognolvl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#IO.lognolvl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO.lognolvl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="shared.IO.logwarn">
+<em class="property">static </em><code class="sig-name descname">logwarn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#IO.logwarn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO.logwarn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="shared.IO.printbold">
+<em class="property">static </em><code class="sig-name descname">printbold</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#IO.printbold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO.printbold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="shared.IO.printdbg">
+<em class="property">static </em><code class="sig-name descname">printdbg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#IO.printdbg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO.printdbg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="shared.IO.printerr">
+<em class="property">static </em><code class="sig-name descname">printerr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#IO.printerr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO.printerr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="shared.IO.printinfo">
+<em class="property">static </em><code class="sig-name descname">printinfo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#IO.printinfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO.printinfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="shared.IO.printwarn">
+<em class="property">static </em><code class="sig-name descname">printwarn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#IO.printwarn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.IO.printwarn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="shared.StatusCodes">
+<em class="property">class </em><code class="sig-prename descclassname">shared.</code><code class="sig-name descname">StatusCodes</code><a class="reference internal" href="../_modules/shared.html#StatusCodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.StatusCodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Namespace for descriptive status codes, for code readability</p>
+<p>– HTTP Status Codes –
+Original Idea From: <a class="reference external" href="https://www.flaskapi.org/">flask_api</a>
+:ref RFC2616: <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</a>
+:ref RFC6585: <a class="reference external" href="http://tools.ietf.org/html/rfc6585">http://tools.ietf.org/html/rfc6585</a></p>
+<p>… examples of possible future sections …
+– MYSQL Error Codes –
+– SERVER Status Codes –
+– KAMAILIO Error Codes –
+– RTPENGINE Error Codes –</p>
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_ACCEPTED">
+<code class="sig-name descname">HTTP_ACCEPTED</code><em class="property"> = 202</em><a class="headerlink" href="#shared.StatusCodes.HTTP_ACCEPTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_BAD_GATEWAY">
+<code class="sig-name descname">HTTP_BAD_GATEWAY</code><em class="property"> = 502</em><a class="headerlink" href="#shared.StatusCodes.HTTP_BAD_GATEWAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_BAD_REQUEST">
+<code class="sig-name descname">HTTP_BAD_REQUEST</code><em class="property"> = 400</em><a class="headerlink" href="#shared.StatusCodes.HTTP_BAD_REQUEST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_CONFLICT">
+<code class="sig-name descname">HTTP_CONFLICT</code><em class="property"> = 409</em><a class="headerlink" href="#shared.StatusCodes.HTTP_CONFLICT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_CONNECTION_CLOSED_WITHOUT_RESPONSE">
+<code class="sig-name descname">HTTP_CONNECTION_CLOSED_WITHOUT_RESPONSE</code><em class="property"> = 444</em><a class="headerlink" href="#shared.StatusCodes.HTTP_CONNECTION_CLOSED_WITHOUT_RESPONSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_CONTINUE">
+<code class="sig-name descname">HTTP_CONTINUE</code><em class="property"> = 100</em><a class="headerlink" href="#shared.StatusCodes.HTTP_CONTINUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_CREATED">
+<code class="sig-name descname">HTTP_CREATED</code><em class="property"> = 201</em><a class="headerlink" href="#shared.StatusCodes.HTTP_CREATED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_EXPECTATION_FAILED">
+<code class="sig-name descname">HTTP_EXPECTATION_FAILED</code><em class="property"> = 417</em><a class="headerlink" href="#shared.StatusCodes.HTTP_EXPECTATION_FAILED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_FORBIDDEN">
+<code class="sig-name descname">HTTP_FORBIDDEN</code><em class="property"> = 403</em><a class="headerlink" href="#shared.StatusCodes.HTTP_FORBIDDEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_FOUND">
+<code class="sig-name descname">HTTP_FOUND</code><em class="property"> = 302</em><a class="headerlink" href="#shared.StatusCodes.HTTP_FOUND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_GATEWAY_TIMEOUT">
+<code class="sig-name descname">HTTP_GATEWAY_TIMEOUT</code><em class="property"> = 504</em><a class="headerlink" href="#shared.StatusCodes.HTTP_GATEWAY_TIMEOUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_GONE">
+<code class="sig-name descname">HTTP_GONE</code><em class="property"> = 410</em><a class="headerlink" href="#shared.StatusCodes.HTTP_GONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_HTTP_VERSION_NOT_SUPPORTED">
+<code class="sig-name descname">HTTP_HTTP_VERSION_NOT_SUPPORTED</code><em class="property"> = 505</em><a class="headerlink" href="#shared.StatusCodes.HTTP_HTTP_VERSION_NOT_SUPPORTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_INTERNAL_SERVER_ERROR">
+<code class="sig-name descname">HTTP_INTERNAL_SERVER_ERROR</code><em class="property"> = 500</em><a class="headerlink" href="#shared.StatusCodes.HTTP_INTERNAL_SERVER_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_LENGTH_REQUIRED">
+<code class="sig-name descname">HTTP_LENGTH_REQUIRED</code><em class="property"> = 411</em><a class="headerlink" href="#shared.StatusCodes.HTTP_LENGTH_REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_LOOP_DETECTED">
+<code class="sig-name descname">HTTP_LOOP_DETECTED</code><em class="property"> = 508</em><a class="headerlink" href="#shared.StatusCodes.HTTP_LOOP_DETECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_METHOD_NOT_ALLOWED">
+<code class="sig-name descname">HTTP_METHOD_NOT_ALLOWED</code><em class="property"> = 405</em><a class="headerlink" href="#shared.StatusCodes.HTTP_METHOD_NOT_ALLOWED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_MOVED_PERMANENTLY">
+<code class="sig-name descname">HTTP_MOVED_PERMANENTLY</code><em class="property"> = 301</em><a class="headerlink" href="#shared.StatusCodes.HTTP_MOVED_PERMANENTLY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_MULTIPLE_CHOICES">
+<code class="sig-name descname">HTTP_MULTIPLE_CHOICES</code><em class="property"> = 300</em><a class="headerlink" href="#shared.StatusCodes.HTTP_MULTIPLE_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_MULTI_STATUS">
+<code class="sig-name descname">HTTP_MULTI_STATUS</code><em class="property"> = 207</em><a class="headerlink" href="#shared.StatusCodes.HTTP_MULTI_STATUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_NETWORK_AUTHENTICATION_REQUIRED">
+<code class="sig-name descname">HTTP_NETWORK_AUTHENTICATION_REQUIRED</code><em class="property"> = 511</em><a class="headerlink" href="#shared.StatusCodes.HTTP_NETWORK_AUTHENTICATION_REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_NON_AUTHORITATIVE_INFORMATION">
+<code class="sig-name descname">HTTP_NON_AUTHORITATIVE_INFORMATION</code><em class="property"> = 203</em><a class="headerlink" href="#shared.StatusCodes.HTTP_NON_AUTHORITATIVE_INFORMATION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_NOT_ACCEPTABLE">
+<code class="sig-name descname">HTTP_NOT_ACCEPTABLE</code><em class="property"> = 406</em><a class="headerlink" href="#shared.StatusCodes.HTTP_NOT_ACCEPTABLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_NOT_EXTENDED">
+<code class="sig-name descname">HTTP_NOT_EXTENDED</code><em class="property"> = 510</em><a class="headerlink" href="#shared.StatusCodes.HTTP_NOT_EXTENDED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_NOT_FOUND">
+<code class="sig-name descname">HTTP_NOT_FOUND</code><em class="property"> = 404</em><a class="headerlink" href="#shared.StatusCodes.HTTP_NOT_FOUND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_NOT_IMPLEMENTED">
+<code class="sig-name descname">HTTP_NOT_IMPLEMENTED</code><em class="property"> = 501</em><a class="headerlink" href="#shared.StatusCodes.HTTP_NOT_IMPLEMENTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_NOT_MODIFIED">
+<code class="sig-name descname">HTTP_NOT_MODIFIED</code><em class="property"> = 304</em><a class="headerlink" href="#shared.StatusCodes.HTTP_NOT_MODIFIED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_NO_CONTENT">
+<code class="sig-name descname">HTTP_NO_CONTENT</code><em class="property"> = 204</em><a class="headerlink" href="#shared.StatusCodes.HTTP_NO_CONTENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_OK">
+<code class="sig-name descname">HTTP_OK</code><em class="property"> = 200</em><a class="headerlink" href="#shared.StatusCodes.HTTP_OK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_PARTIAL_CONTENT">
+<code class="sig-name descname">HTTP_PARTIAL_CONTENT</code><em class="property"> = 206</em><a class="headerlink" href="#shared.StatusCodes.HTTP_PARTIAL_CONTENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_PAYMENT_REQUIRED">
+<code class="sig-name descname">HTTP_PAYMENT_REQUIRED</code><em class="property"> = 402</em><a class="headerlink" href="#shared.StatusCodes.HTTP_PAYMENT_REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_PERMANENT_REDIRECT">
+<code class="sig-name descname">HTTP_PERMANENT_REDIRECT</code><em class="property"> = 308</em><a class="headerlink" href="#shared.StatusCodes.HTTP_PERMANENT_REDIRECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_PRECONDITION_FAILED">
+<code class="sig-name descname">HTTP_PRECONDITION_FAILED</code><em class="property"> = 412</em><a class="headerlink" href="#shared.StatusCodes.HTTP_PRECONDITION_FAILED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_PRECONDITION_REQUIRED">
+<code class="sig-name descname">HTTP_PRECONDITION_REQUIRED</code><em class="property"> = 428</em><a class="headerlink" href="#shared.StatusCodes.HTTP_PRECONDITION_REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_PROXY_AUTHENTICATION_REQUIRED">
+<code class="sig-name descname">HTTP_PROXY_AUTHENTICATION_REQUIRED</code><em class="property"> = 407</em><a class="headerlink" href="#shared.StatusCodes.HTTP_PROXY_AUTHENTICATION_REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_REQUESTED_RANGE_NOT_SATISFIABLE">
+<code class="sig-name descname">HTTP_REQUESTED_RANGE_NOT_SATISFIABLE</code><em class="property"> = 416</em><a class="headerlink" href="#shared.StatusCodes.HTTP_REQUESTED_RANGE_NOT_SATISFIABLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_REQUEST_ENTITY_TOO_LARGE">
+<code class="sig-name descname">HTTP_REQUEST_ENTITY_TOO_LARGE</code><em class="property"> = 413</em><a class="headerlink" href="#shared.StatusCodes.HTTP_REQUEST_ENTITY_TOO_LARGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE">
+<code class="sig-name descname">HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE</code><em class="property"> = 431</em><a class="headerlink" href="#shared.StatusCodes.HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_REQUEST_TIMEOUT">
+<code class="sig-name descname">HTTP_REQUEST_TIMEOUT</code><em class="property"> = 408</em><a class="headerlink" href="#shared.StatusCodes.HTTP_REQUEST_TIMEOUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_REQUEST_URI_TOO_LONG">
+<code class="sig-name descname">HTTP_REQUEST_URI_TOO_LONG</code><em class="property"> = 414</em><a class="headerlink" href="#shared.StatusCodes.HTTP_REQUEST_URI_TOO_LONG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_RESERVED">
+<code class="sig-name descname">HTTP_RESERVED</code><em class="property"> = 306</em><a class="headerlink" href="#shared.StatusCodes.HTTP_RESERVED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_RESET_CONTENT">
+<code class="sig-name descname">HTTP_RESET_CONTENT</code><em class="property"> = 205</em><a class="headerlink" href="#shared.StatusCodes.HTTP_RESET_CONTENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_SEE_OTHER">
+<code class="sig-name descname">HTTP_SEE_OTHER</code><em class="property"> = 303</em><a class="headerlink" href="#shared.StatusCodes.HTTP_SEE_OTHER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_SERVICE_UNAVAILABLE">
+<code class="sig-name descname">HTTP_SERVICE_UNAVAILABLE</code><em class="property"> = 503</em><a class="headerlink" href="#shared.StatusCodes.HTTP_SERVICE_UNAVAILABLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_SWITCHING_PROTOCOLS">
+<code class="sig-name descname">HTTP_SWITCHING_PROTOCOLS</code><em class="property"> = 101</em><a class="headerlink" href="#shared.StatusCodes.HTTP_SWITCHING_PROTOCOLS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_TEMPORARY_REDIRECT">
+<code class="sig-name descname">HTTP_TEMPORARY_REDIRECT</code><em class="property"> = 307</em><a class="headerlink" href="#shared.StatusCodes.HTTP_TEMPORARY_REDIRECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_TOO_MANY_REQUESTS">
+<code class="sig-name descname">HTTP_TOO_MANY_REQUESTS</code><em class="property"> = 429</em><a class="headerlink" href="#shared.StatusCodes.HTTP_TOO_MANY_REQUESTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_UNAUTHORIZED">
+<code class="sig-name descname">HTTP_UNAUTHORIZED</code><em class="property"> = 401</em><a class="headerlink" href="#shared.StatusCodes.HTTP_UNAUTHORIZED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_UNSUPPORTED_MEDIA_TYPE">
+<code class="sig-name descname">HTTP_UNSUPPORTED_MEDIA_TYPE</code><em class="property"> = 415</em><a class="headerlink" href="#shared.StatusCodes.HTTP_UNSUPPORTED_MEDIA_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.HTTP_USE_PROXY">
+<code class="sig-name descname">HTTP_USE_PROXY</code><em class="property"> = 305</em><a class="headerlink" href="#shared.StatusCodes.HTTP_USE_PROXY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.__dict__">
+<code class="sig-name descname">__dict__</code><em class="property"> = mappingproxy({'__module__': 'shared', '__doc__': '\n    Namespace for descriptive status codes, for code readability\n\n    -- HTTP Status Codes --\n    Original Idea From: `flask_api &lt;https://www.flaskapi.org/&gt;`_\n    :ref RFC2616: http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html\n    :ref RFC6585: http://tools.ietf.org/html/rfc6585\n\n    ... examples of possible future sections ...\n    -- MYSQL Error Codes --\n    -- SERVER Status Codes --\n    -- KAMAILIO Error Codes --\n    -- RTPENGINE Error Codes --\n    ', 'HTTP_CONTINUE': 100, 'HTTP_SWITCHING_PROTOCOLS': 101, 'HTTP_OK': 200, 'HTTP_CREATED': 201, 'HTTP_ACCEPTED': 202, 'HTTP_NON_AUTHORITATIVE_INFORMATION': 203, 'HTTP_NO_CONTENT': 204, 'HTTP_RESET_CONTENT': 205, 'HTTP_PARTIAL_CONTENT': 206, 'HTTP_MULTI_STATUS': 207, 'HTTP_MULTIPLE_CHOICES': 300, 'HTTP_MOVED_PERMANENTLY': 301, 'HTTP_FOUND': 302, 'HTTP_SEE_OTHER': 303, 'HTTP_NOT_MODIFIED': 304, 'HTTP_USE_PROXY': 305, 'HTTP_RESERVED': 306, 'HTTP_TEMPORARY_REDIRECT': 307, 'HTTP_PERMANENT_REDIRECT': 308, 'HTTP_BAD_REQUEST': 400, 'HTTP_UNAUTHORIZED': 401, 'HTTP_PAYMENT_REQUIRED': 402, 'HTTP_FORBIDDEN': 403, 'HTTP_NOT_FOUND': 404, 'HTTP_METHOD_NOT_ALLOWED': 405, 'HTTP_NOT_ACCEPTABLE': 406, 'HTTP_PROXY_AUTHENTICATION_REQUIRED': 407, 'HTTP_REQUEST_TIMEOUT': 408, 'HTTP_CONFLICT': 409, 'HTTP_GONE': 410, 'HTTP_LENGTH_REQUIRED': 411, 'HTTP_PRECONDITION_FAILED': 412, 'HTTP_REQUEST_ENTITY_TOO_LARGE': 413, 'HTTP_REQUEST_URI_TOO_LONG': 414, 'HTTP_UNSUPPORTED_MEDIA_TYPE': 415, 'HTTP_REQUESTED_RANGE_NOT_SATISFIABLE': 416, 'HTTP_EXPECTATION_FAILED': 417, 'HTTP_PRECONDITION_REQUIRED': 428, 'HTTP_TOO_MANY_REQUESTS': 429, 'HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE': 431, 'HTTP_CONNECTION_CLOSED_WITHOUT_RESPONSE': 444, 'HTTP_INTERNAL_SERVER_ERROR': 500, 'HTTP_NOT_IMPLEMENTED': 501, 'HTTP_BAD_GATEWAY': 502, 'HTTP_SERVICE_UNAVAILABLE': 503, 'HTTP_GATEWAY_TIMEOUT': 504, 'HTTP_HTTP_VERSION_NOT_SUPPORTED': 505, 'HTTP_LOOP_DETECTED': 508, 'HTTP_NOT_EXTENDED': 510, 'HTTP_NETWORK_AUTHENTICATION_REQUIRED': 511, '__dict__': &lt;attribute '__dict__' of 'StatusCodes' objects&gt;, '__weakref__': &lt;attribute '__weakref__' of 'StatusCodes' objects&gt;})</em><a class="headerlink" href="#shared.StatusCodes.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'shared'</em><a class="headerlink" href="#shared.StatusCodes.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shared.StatusCodes.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#shared.StatusCodes.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.allowed_file">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">allowed_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">ALLOWED_EXTENSIONS</span><span class="o">=</span><span class="default_value">{'csv', 'gif', 'jpeg', 'jpg', 'pdf', 'png', 'txt'}</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#allowed_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.allowed_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="shared.debugEndpoint">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">debugEndpoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">log_out</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">print_out</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#debugEndpoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.debugEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Debug an endpoint</p>
+<p>Must be run within request context</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log_out</strong> – True | False</p></li>
+<li><p><strong>print_out</strong> – True | False</p></li>
+<li><p><strong>kwargs</strong> – Any args to print / log (&lt;key=value&gt; key word pairs)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.debugException">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">debugException</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ex</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">log_ex</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">print_ex</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">showstack</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#debugException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.debugException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Debugging of an exception: print and/or log frame and/or stacktrace
+:param ex:          The exception object
+:param log_ex:      True | False
+:param print_ex:    True | False
+:param showstack:   True | False</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.dictToStrFields">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">dictToStrFields</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fields_dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#dictToStrFields"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.dictToStrFields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="shared.getCustomRoutes">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">getCustomRoutes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#getCustomRoutes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.getCustomRoutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return custom kamailio routes from config file</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.getDNSNames">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">getDNSNames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#getDNSNames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.getDNSNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns ( hostname, domain, fqdn ) of system</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.getExternalIP">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">getExternalIP</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#getExternalIP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.getExternalIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns external ip of system</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.getInternalIP">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">getInternalIP</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#getInternalIP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.getInternalIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current ip of system</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.getRequestData">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">getRequestData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#getRequestData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.getRequestData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get data from request formatted as dict</p>
+<p>Must be run within request context</p>
+<p>The following data formats are supported:</p>
+<ul class="simple">
+<li><p>multipart forms</p></li>
+<li><p>url encoded forms</p></li>
+<li><p>JSON body</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>request data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.healthCheck">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">healthCheck</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#healthCheck"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.healthCheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the health of dsiprouter</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.hostToIP">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">hostToIP</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">host</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#hostToIP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.hostToIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert host to IP Address</p>
+<p>Supports conversion to IPv4 and IPv6</p>
+<p>IPv4 takes priority and is tried first</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>host</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – hostname/fqdn to convert to IP</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>IP address of host</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str|None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.ipToHost">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">ipToHost</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ip</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#ipToHost"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.ipToHost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts IP Address to hostname</p>
+<p>Supports conversion from IPv4 and IPv6</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ip</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – IP address to convert</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>hostname for IP</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str|None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.ipv4Test">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">ipv4Test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#ipv4Test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.ipv4Test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="shared.ipv6Test">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">ipv6Test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#ipv6Test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.ipv6Test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="shared.isCertValid">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">isCertValid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">hostname</span></em>, <em class="sig-param"><span class="n">externalip</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">5061</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#isCertValid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.isCertValid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the hostname has a valid cert</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.isValidIP">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">isValidIP</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span></em>, <em class="sig-param"><span class="n">ip_proto</span><span class="o">=</span><span class="default_value">''</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#isValidIP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.isValidIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if ip address is valid
+:address:       str
+:tcp_proto:     str
+:ref:           &lt;<a class="reference external" href="https://stackoverflow.com/questions/319279/how-to-validate-ip-address-in-python">https://stackoverflow.com/questions/319279/how-to-validate-ip-address-in-python</a>&gt;</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.monthdelta">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">monthdelta</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">delta</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#monthdelta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.monthdelta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dt with a delta month change (neg or pos)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.objToDict">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">objToDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#objToDict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.objToDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts an arbitrary object to dict</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.parseGenericUri">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">parseGenericUri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#parseGenericUri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.parseGenericUri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse Generic URI into its components (as generic as possible)</p>
+<p>Port is the only part type casted (parse delimited fields accordingly)</p>
+<p>components dict format:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;proto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;userpw&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;ipv6&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;ipv4&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;port&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – URI to parse</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>components of URI</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict|None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.parseSipUri">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">parseSipUri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#parseSipUri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.parseSipUri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse SIP URI into its components</p>
+<p>components dict format:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;proto&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;ipv6&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;ipv4&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;port&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">dict</span><span class="o">|</span><span class="kc">None</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – SIP URI to parse</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>components of SIP URI</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict|None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.redirectCustom">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">redirectCustom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">location</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">render_args</span></em>, <em class="sig-param"><span class="n">code</span><span class="o">=</span><span class="default_value">302</span></em>, <em class="sig-param"><span class="n">response_cb</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">force_redirect</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#redirectCustom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.redirectCustom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines functionality of <code class="xref py py-func docutils literal notranslate"><span class="pre">werkzeug.utils.redirect()</span></code> with <code class="xref py py-func docutils literal notranslate"><span class="pre">flask.templating.render_template()</span></code>
+to allow for virtual redirection to an endpoint with any HTTP status code.</p>
+<ol class="arabic">
+<li><p>render template at a custom url (doesn’t have to be an endpoint)</p>
+<blockquote>
+<div><dl class="simple">
+<dt>def index():</dt><dd><p>return redirectCustom(‘<a class="reference external" href="http://localhost:5000/notfound">http://localhost:5000/notfound</a>’, render_template(‘not_found.html’), code=404)</p>
+</dd>
+<dt>def index():</dt><dd><p>html = ‘&lt;h1&gt;Are you lost {{ username }}?&lt;/h1&gt;’
+return redirectCustom(url_for(‘notfound’), render_template_string(html), username=’john’, code=404)</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>customizing the response before sending to the client</p>
+<blockquote>
+<div><dl>
+<dt>def index():</dt><dd><dl class="simple">
+<dt>def addAuthHeaders(response):</dt><dd><p>response.headers[‘Access-Control-Allow-Origin’ = ‘*’
+response.headers[‘Access-Control-Allow-Headers’] = ‘origin, x-requested-with, content-type’
+response.headers[‘Access-Control-Allow-Methods’] = ‘PUT, GET, POST, DELETE, OPTIONS’</p>
+</dd>
+</dl>
+<p>return redirectCustom(url_for(‘login’), render_template(‘login_custom.html’), code=403, response_cb=addAuthHeaders)</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>redirecting with a custom HTTP status code (normally restricted to 300’s)</p>
+<blockquote>
+<div><dl class="simple">
+<dt>def index():</dt><dd><p>return redirectCustom(url_for(‘<a class="reference external" href="http://localhost:5000/error">http://localhost:5000/error</a>’), showError())</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>forcing redirection when client normally would ignore location header</p>
+<blockquote>
+<div><dl class="simple">
+<dt>def index():</dt><dd><p>return redirectCustom(url_for(showError), showError(), code=500, force_redirect=True)</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Note</dt>
+<dd class="field-odd"><p>the endpoint logic is only executed when a the view function is passed in render_args</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>location</strong> – the location the response should virtually redirect to</p></li>
+<li><p><strong>render_args</strong> – the return value from a view / template rendering function</p></li>
+<li><p><strong>code</strong> – the return HTTP status code, defaults to 302 like a normal redirect</p></li>
+<li><p><strong>response_cb</strong> – callback function taking <code class="xref py py-class docutils literal notranslate"><span class="pre">werkzeug.wrappers.Response</span></code> object as arg and returning edited response</p></li>
+<li><p><strong>force_redirect</strong> – whether to force redirection on client, only needed when client ignores location header</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>client viewable <code class="xref py py-class docutils literal notranslate"><span class="pre">werkzeug.wrappers.Response</span></code> object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.rowToDict">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">rowToDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">row</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#rowToDict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.rowToDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts sqlalchemy row object to python dict
+does not recurse through relationships
+tries table data, then _asdict() method, then objToDict()</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.safeFormatSipUri">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">safeFormatSipUri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">default_proto</span><span class="o">=</span><span class="default_value">'sip'</span></em>, <em class="sig-param"><span class="n">default_user</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">default_port</span><span class="o">=</span><span class="default_value">5060</span></em>, <em class="sig-param"><span class="n">default_params</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#safeFormatSipUri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.safeFormatSipUri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a SIP URI of questionable validity, parse out the good stuff, and fill in the rest</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – URI to format / validate</p></li>
+<li><p><strong>default_proto</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – default protocol if missing</p></li>
+<li><p><strong>default_user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – default user if missing</p></li>
+<li><p><strong>default_port</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – default port if missing</p></li>
+<li><p><strong>default_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) – default SIP parameters</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SIP URI safely formatted</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str|None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.safeStripPort">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">safeStripPort</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#safeStripPort"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.safeStripPort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Strip port from address</p>
+<p>Properly strips on IPv6, IPv4, and FQDN addresses</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – address to strip port from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>address with port stripped</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.safeUriToHost">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">safeUriToHost</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">default_port</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#safeUriToHost"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.safeUriToHost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Strips non-host parts and converges on the host</p>
+<p>Supports IPv4, IPv6, and FQDN addresses as the host</p>
+<p>Optionally formats with port if default port is set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – uri to extract host from</p></li>
+<li><p><strong>default_port</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – default port if not found</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>host or host:port if port set</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str|None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.showApiError">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">showApiError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ex</span></em>, <em class="sig-param"><span class="n">payload</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#showApiError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.showApiError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="shared.showError">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">showError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">code</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">msg</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#showError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.showError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="shared.strFieldsToDict">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">strFieldsToDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fields_str</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#strFieldsToDict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.strFieldsToDict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="shared.stripDictVals">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">stripDictVals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#stripDictVals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.stripDictVals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="shared.supportsColor">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">supportsColor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stream</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#supportsColor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.supportsColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if terminal supports ASCII color codes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="shared.updateConfig">
+<code class="sig-prename descclassname">shared.</code><code class="sig-name descname">updateConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config_obj</span></em>, <em class="sig-param"><span class="n">field_dict</span></em>, <em class="sig-param"><span class="n">hot_reload</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shared.html#updateConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shared.updateConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a python config module
+:param config_obj:
+:param field_dict:
+:return:</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sysloginit.html" class="btn btn-neutral float-right" title="2.7. sysloginit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="settings.html" class="btn btn-neutral float-left" title="2.5. settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright dOpenSource
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

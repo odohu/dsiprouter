@@ -1,0 +1,790 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.1. GUI/API Routes &mdash; dSIPRouter 0.64 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="3. The dSIPRouter Project" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> dSIPRouter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.64
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">1.  User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user/installing.html">1.2.1. Installing dSIPRouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/command_line_options.html">1.3.1. Command Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/configuring.html">1.4.1. Configuring dSIPRouter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user/carrier_groups.html">1.4.1.1. Carrier Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/carrier_groups.html#adding-a-carrier">1.4.1.2. Adding a Carrier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/pbxs_and_endpoints.html">1.4.1.3. PBX(s) and Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/pbxs_and_endpoints.html#inbound-did-mapping">1.4.1.4. Inbound DID Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/domains.html">1.4.1.5. Adding a Domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/global_outbound_routes.html">1.4.1.6. Global Outbound Routes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user/api.html">1.5.1. API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/use-cases.html">1.6.1. Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/resources.html">1.7.1. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/supported_configurations.html">1.8.1. Supported Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/troubleshooting.html">1.9.1. Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/upgrade.html">1.10.1. Upgrading dSIPRouter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user/upgrade_0.522_to_0.523.html">1.10.1.1.1. Upgrade dSIPRouter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/upgrade_0.50_to_0.51.html">1.10.1.2.1. Upgrade dSIPRouter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user/upgrade_0.621_to_0.63.html">1.10.1.3.1. Upgrade dSIPRouter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">2.  Developer Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/database.html">2.1.  database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/dsiprouter.html">2.2.  dsiprouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/globals.html">2.3.  globals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/modules.html">2.4.  modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/settings.html">2.5.  settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/shared.html">2.6.  shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/sysloginit.html">2.7.  sysloginit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/util.html">2.8.  util</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3.  Routes Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1.  routes</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">dSIPRouter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">3. </span>The dSIPRouter Project</a> &raquo;</li>
+        
+      <li><span class="section-number">3.1. </span>GUI/API Routes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/routes/routes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gui-api-routes">
+<h1><span class="section-number">3.1. </span>GUI/API Routes<a class="headerlink" href="#gui-api-routes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2><span class="section-number">3.1.1. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 45%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Resource</p></th>
+<th class="head"><p>Operation</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-v1-backupandrestore-restore">POST /api/v1/backupandrestore/restore</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#get--api-v1-backupandrestore-backup">GET /api/v1/backupandrestore/backup</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-v1-notification-gwgroup">POST /api/v1/notification/gwgroup</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#get--api-v1-sys-generatepassword">GET /api/v1/sys/generatepassword</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-v1-inboundmapping">POST /api/v1/inboundmapping</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#delete--api-v1-inboundmapping">DELETE /api/v1/inboundmapping</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#get--api-v1-inboundmapping">GET /api/v1/inboundmapping</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#put--api-v1-inboundmapping">PUT /api/v1/inboundmapping</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#put--api-v1-endpointgroups-(int-gwgroupid)">PUT /api/v1/endpointgroups/(int:gwgroupid)</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#put--api-v1-endpointgroups">PUT /api/v1/endpointgroups</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--api-v1-endpointgroups">POST /api/v1/endpointgroups</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--api-v1-certificates">POST /api/v1/certificates</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#put--api-v1-certificates">PUT /api/v1/certificates</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--inboundmappingdelete">POST /inboundmappingdelete</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--outboundroutesdelete">POST /outboundroutesdelete</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--carriergroupdelete">POST /carriergroupdelete</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#get--endpointgroups">GET /endpointgroups</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--endpointgroups">POST /endpointgroups</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#get--inboundmapping">GET /inboundmapping</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--inboundmapping">POST /inboundmapping</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#get--outboundroutes">GET /outboundroutes</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--outboundroutes">POST /outboundroutes</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#get--carriergroups-(int-gwgroup)">GET /carriergroups/(int:gwgroup)</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#get--carriergroups">GET /carriergroups</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--carriergroups">POST /carriergroups</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#post--carrierdelete">POST /carrierdelete</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--pbxdelete">POST /pbxdelete</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#get--teleblock">GET /teleblock</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--teleblock">POST /teleblock</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#get--carriers-group-(int-gwgroup)">GET /carriers/group/(int:gwgroup)</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#get--carriers-(int-gwid)">GET /carriers/(int:gwid)</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#get--carriers">GET /carriers</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#post--carriers">POST /carriers</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#get--cdrs">GET /cdrs</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#get--api-v1-cdrs-endpointgroups-(int-gwgroupid)">GET /api/v1/cdrs/endpointgroups/(int:gwgroupid)</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="#get--api-v1-cdrs-endpoint-(int-gwid)">GET /api/v1/cdrs/endpoint/(int:gwid)</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="#get--docs-(path-filename)">GET /docs/(path:filename)</a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="details">
+<h2><span class="section-number">3.1.2. </span>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<dl class="http post">
+<dt id="post--api-v1-backupandrestore-restore">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/v1/backupandrestore/restore</code><a class="headerlink" href="#post--api-v1-backupandrestore-restore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore backup of the database</p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--api-v1-backupandrestore-backup">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/api/v1/backupandrestore/backup</code><a class="headerlink" href="#get--api-v1-backupandrestore-backup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a backup of the database</p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--api-v1-notification-gwgroup">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/v1/notification/gwgroup</code><a class="headerlink" href="#post--api-v1-notification-gwgroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Endpoint for Sending Notifications</p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--api-v1-sys-generatepassword">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/api/v1/sys/generatepassword</code><a class="headerlink" href="#get--api-v1-sys-generatepassword" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random password</p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--api-v1-inboundmapping">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/v1/inboundmapping</code><a class="headerlink" href="#post--api-v1-inboundmapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Endpoint for Inbound DID Rule Mapping</p>
+</dd></dl>
+
+<dl class="http delete">
+<dt id="delete--api-v1-inboundmapping">
+<code class="sig-name descname">DELETE </code><code class="sig-name descname">/api/v1/inboundmapping</code><a class="headerlink" href="#delete--api-v1-inboundmapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Endpoint for Inbound DID Rule Mapping</p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--api-v1-inboundmapping">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/api/v1/inboundmapping</code><a class="headerlink" href="#get--api-v1-inboundmapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Endpoint for Inbound DID Rule Mapping</p>
+</dd></dl>
+
+<dl class="http put">
+<dt id="put--api-v1-inboundmapping">
+<code class="sig-name descname">PUT </code><code class="sig-name descname">/api/v1/inboundmapping</code><a class="headerlink" href="#put--api-v1-inboundmapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Endpoint for Inbound DID Rule Mapping</p>
+</dd></dl>
+
+<dl class="http put">
+<dt id="put--api-v1-endpointgroups-(int-gwgroupid)">
+<code class="sig-name descname">PUT </code><code class="sig-name descname">/api/v1/endpointgroups/</code><span class="sig-paren">(</span><em class="property">int: </em><em class="sig-param">gwgroupid</em><span class="sig-paren">)</span><a class="headerlink" href="#put--api-v1-endpointgroups-(int-gwgroupid)" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="http put">
+<dt id="put--api-v1-endpointgroups">
+<code class="sig-name descname">PUT </code><code class="sig-name descname">/api/v1/endpointgroups</code><a class="headerlink" href="#put--api-v1-endpointgroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a single Endpoint Group</p>
+<p>The gwgroupid can be provided in url path or payload</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    name: &lt;string&gt;,
+    calllimit: &lt;int&gt;,
+    auth: {
+        type: &quot;ip&quot;|&quot;userpwd&quot;,
+        user: &lt;string&gt;
+        pass: &lt;string&gt;
+        domain: &lt;string&gt;
+    },
+    endpoints [
+        {
+            gwid:&lt;int&gt;,
+            hostname:&lt;string&gt;,
+            description:&lt;string&gt;
+        },
+        ...
+    ],
+    strip: &lt;int&gt;,
+    prefix: &lt;string&gt;,
+    notifications: {
+        overmaxcalllimit: &lt;string&gt;,
+        endpointfailure: &lt;string&gt;
+    },
+    cdr: {
+        cdr_email: &lt;string&gt;,
+        cdr_send_interval: &lt;string&gt;
+    }
+    fusionpbx: {
+        enabled: &lt;bool&gt;,
+        dbhost: &lt;string&gt;,
+        dbuser: &lt;string&gt;,
+        dbpass: &lt;string&gt;
+    }
+}
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    error: &lt;string&gt;,
+    msg: &lt;string&gt;,
+    kamreload: &lt;bool&gt;,
+    data: [
+        {
+            gwgroupid: &lt;int&gt;,
+            endpoints: [
+                &lt;int&gt;,
+                ...
+            ]
+        }
+    ]
+}
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--api-v1-endpointgroups">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/v1/endpointgroups</code><a class="headerlink" href="#post--api-v1-endpointgroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a single Endpoint Group</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    name: &lt;string&gt;,
+    calllimit: &lt;int&gt;,
+    auth: {
+        type: &quot;ip&quot;|&quot;userpwd&quot;,
+        user: &lt;string&gt;
+        pass: &lt;string&gt;
+        domain: &lt;string&gt;
+    },
+    endpoints [
+        {
+            hostname:&lt;string&gt;,
+            description:&lt;string&gt;
+        },
+        ...
+    ],
+    strip: &lt;int&gt;,
+    prefix: &lt;string&gt;,
+    notifications: {
+        overmaxcalllimit: &lt;string&gt;,
+        endpointfailure: &lt;string&gt;
+    },
+    cdr: {
+        cdr_email: &lt;string&gt;,
+        cdr_send_interval: &lt;string&gt;
+    }
+    fusionpbx: {
+        enabled: &lt;bool&gt;,
+        dbhost: &lt;string&gt;,
+        dbuser: &lt;string&gt;,
+        dbpass: &lt;string&gt;
+    }
+}
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    error: &lt;string&gt;,
+    msg: &lt;string&gt;,
+    kamreload: &lt;bool&gt;,
+    data: [
+        {
+            gwgroupid: &lt;int&gt;,
+            endpoints: [
+                &lt;int&gt;,
+                ...
+            ]
+        }
+    ]
+}
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--api-v1-certificates">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/api/v1/certificates</code><a class="headerlink" href="#post--api-v1-certificates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create TLS cert for a domain</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>{</dt><dd><p>domain: &lt;string&gt;,
+ip: &lt;int&gt;,
+port: &lt;int&gt;
+server_name_mode: &lt;int&gt;</p>
+</dd>
+</dl>
+<p>}</p>
+</dd></dl>
+
+<dl class="http put">
+<dt id="put--api-v1-certificates">
+<code class="sig-name descname">PUT </code><code class="sig-name descname">/api/v1/certificates</code><a class="headerlink" href="#put--api-v1-certificates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create TLS cert for a domain</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>{</dt><dd><p>domain: &lt;string&gt;,
+ip: &lt;int&gt;,
+port: &lt;int&gt;
+server_name_mode: &lt;int&gt;</p>
+</dd>
+</dl>
+<p>}</p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--inboundmappingdelete">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/inboundmappingdelete</code><a class="headerlink" href="#post--inboundmappingdelete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deleting of dr_rules table (inbound routes only)</p>
+<p>Partially Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--outboundroutesdelete">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/outboundroutesdelete</code><a class="headerlink" href="#post--outboundroutesdelete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deleting of dr_rules table (outbound routes only)</p>
+<p>Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--carriergroupdelete">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/carriergroupdelete</code><a class="headerlink" href="#post--carriergroupdelete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a group of carriers</p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--endpointgroups">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/endpointgroups</code><a class="headerlink" href="#get--endpointgroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display Endpoint Groups / Endpoints in the view</p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--endpointgroups">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/endpointgroups</code><a class="headerlink" href="#post--endpointgroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add or Update a PBX / Endpoint</p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--inboundmapping">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/inboundmapping</code><a class="headerlink" href="#get--inboundmapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displaying of dr_rules table (inbound routes only)</p>
+<p>Partially Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--inboundmapping">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/inboundmapping</code><a class="headerlink" href="#post--inboundmapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adding and Updating of dr_rules table (inbound routes only)</p>
+<p>Partially Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--outboundroutes">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/outboundroutes</code><a class="headerlink" href="#get--outboundroutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displaying of dr_rules table (outbound routes only)</p>
+<p>Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--outboundroutes">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/outboundroutes</code><a class="headerlink" href="#post--outboundroutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adding and Updating dr_rules table (outbound routes only)</p>
+<p>Supports rule definitions for Kamailio Drouting module</p>
+<p>Documentation: <a class="reference external" href="https://kamailio.org/docs/modules/4.4.x/modules/drouting.html">Drouting module</a></p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--carriergroups-(int-gwgroup)">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/carriergroups/</code><span class="sig-paren">(</span><em class="property">int: </em><em class="sig-param">gwgroup</em><span class="sig-paren">)</span><a class="headerlink" href="#get--carriergroups-(int-gwgroup)" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="http get">
+<dt id="get--carriergroups">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/carriergroups</code><a class="headerlink" href="#get--carriergroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the carrier groups in the view
+:param gwgroup:</p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--carriergroups">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/carriergroups</code><a class="headerlink" href="#post--carriergroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add or Update a group of carriers</p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--carrierdelete">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/carrierdelete</code><a class="headerlink" href="#post--carrierdelete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a carrier</p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--pbxdelete">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/pbxdelete</code><a class="headerlink" href="#post--pbxdelete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a PBX / Endpoint</p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--teleblock">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/teleblock</code><a class="headerlink" href="#get--teleblock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display teleblock settings in view</p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--teleblock">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/teleblock</code><a class="headerlink" href="#post--teleblock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update teleblock config file settings</p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--carriers-group-(int-gwgroup)">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/carriers/group/</code><span class="sig-paren">(</span><em class="property">int: </em><em class="sig-param">gwgroup</em><span class="sig-paren">)</span><a class="headerlink" href="#get--carriers-group-(int-gwgroup)" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="http get">
+<dt id="get--carriers-(int-gwid)">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/carriers/</code><span class="sig-paren">(</span><em class="property">int: </em><em class="sig-param">gwid</em><span class="sig-paren">)</span><a class="headerlink" href="#get--carriers-(int-gwid)" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="http get">
+<dt id="get--carriers">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/carriers</code><a class="headerlink" href="#get--carriers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the carriers table
+:param gwid:
+:param gwgroup:
+:param newgwid:</p>
+</dd></dl>
+
+<dl class="http post">
+<dt id="post--carriers">
+<code class="sig-name descname">POST </code><code class="sig-name descname">/carriers</code><a class="headerlink" href="#post--carriers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add or Update a carrier</p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--cdrs">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/cdrs</code><a class="headerlink" href="#get--cdrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display Endpoint Groups / Endpoints in the view</p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--api-v1-cdrs-endpointgroups-(int-gwgroupid)">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/api/v1/cdrs/endpointgroups/</code><span class="sig-paren">(</span><em class="property">int: </em><em class="sig-param">gwgroupid</em><span class="sig-paren">)</span><a class="headerlink" href="#get--api-v1-cdrs-endpointgroups-(int-gwgroupid)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Purpose</p>
+<p>Getting the cdrs for a gatewaygroup</p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--api-v1-cdrs-endpoint-(int-gwid)">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/api/v1/cdrs/endpoint/</code><span class="sig-paren">(</span><em class="property">int: </em><em class="sig-param">gwid</em><span class="sig-paren">)</span><a class="headerlink" href="#get--api-v1-cdrs-endpoint-(int-gwid)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Purpose</p>
+<p>Getting the cdrs for a gateway thats part of a gateway group</p>
+</dd></dl>
+
+<dl class="http get">
+<dt id="get--docs-(path-filename)">
+<code class="sig-name descname">GET </code><code class="sig-name descname">/docs/</code><span class="sig-paren">(</span><em class="property">path: </em><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#get--docs-(path-filename)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used internally to send static files from the static
+folder to the browser.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.5.</span></p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="3. The dSIPRouter Project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright dOpenSource
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

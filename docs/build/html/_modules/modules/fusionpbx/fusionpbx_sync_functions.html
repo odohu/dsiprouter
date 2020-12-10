@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>modules.fusionpbx.fusionpbx_sync_functions &mdash; dSIPRouter 0.64 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> dSIPRouter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.64
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/index.html">1.  User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../user/installing.html">1.2.1. Installing dSIPRouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user/command_line_options.html">1.3.1. Command Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user/configuring.html">1.4.1. Configuring dSIPRouter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../user/carrier_groups.html">1.4.1.1. Carrier Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user/carrier_groups.html#adding-a-carrier">1.4.1.2. Adding a Carrier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user/pbxs_and_endpoints.html">1.4.1.3. PBX(s) and Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user/pbxs_and_endpoints.html#inbound-did-mapping">1.4.1.4. Inbound DID Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user/domains.html">1.4.1.5. Adding a Domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user/global_outbound_routes.html">1.4.1.6. Global Outbound Routes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user/api.html">1.5.1. API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user/use-cases.html">1.6.1. Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user/resources.html">1.7.1. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user/supported_configurations.html">1.8.1. Supported Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user/troubleshooting.html">1.9.1. Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user/upgrade.html">1.10.1. Upgrading dSIPRouter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../user/upgrade_0.522_to_0.523.html">1.10.1.1.1. Upgrade dSIPRouter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user/upgrade_0.50_to_0.51.html">1.10.1.2.1. Upgrade dSIPRouter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user/upgrade_0.621_to_0.63.html">1.10.1.3.1. Upgrade dSIPRouter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/index.html">2.  Developer Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/database.html">2.1.  database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/dsiprouter.html">2.2.  dsiprouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/globals.html">2.3.  globals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/modules.html">2.4.  modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/settings.html">2.5.  settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/shared.html">2.6.  shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/sysloginit.html">2.7.  sysloginit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/util.html">2.8.  util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../routes/index.html">3.  Routes Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../routes/routes.html">3.1.  routes</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dSIPRouter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>modules.fusionpbx.fusionpbx_sync_functions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for modules.fusionpbx.fusionpbx_sync_functions</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">psycopg2</span><span class="o">,</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">MySQLdb</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">docker</span>
+<span class="kn">from</span> <span class="nn">database</span> <span class="kn">import</span> <span class="n">Domain</span><span class="p">,</span> <span class="n">DomainAttrs</span><span class="p">,</span> <span class="n">dSIPMultiDomainMapping</span>
+<span class="kn">from</span> <span class="nn">util.security</span> <span class="kn">import</span> <span class="n">AES_CTR</span>
+<span class="kn">from</span> <span class="nn">shared</span> <span class="kn">import</span> <span class="n">safeUriToHost</span>
+
+<span class="c1"># TODO: error handling here is pretty bad, we need to establish connection from main func and pass conn/cursors to sub funcs</span>
+<span class="c1">#       I implemented an exmaple in sync_needed() of proper connection / cursor handling, we need to move that to the entry func</span>
+<span class="c1">#       i.e. run_sync() should utilize the proper handling of the connections/cursors and pass them to sub functions</span>
+
+<span class="c1"># Obtain a set of FusionPBX systems that contains domains that Kamailio will route traffic to.</span>
+<div class="viewcode-block" id="get_sources"><a class="viewcode-back" href="../../../dev/modules.html#modules.fusionpbx.fusionpbx_sync_functions.get_sources">[docs]</a><span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="n">db</span><span class="p">):</span>
+    <span class="c1"># Dictionary object to hold the set of source FusionPBX systems</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Kamailio Database Parameters</span>
+    <span class="n">kam_hostname</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;hostname&#39;</span><span class="p">]</span>
+    <span class="n">kam_username</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+    <span class="n">kam_password</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
+    <span class="n">kam_database</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">kam_hostname</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">kam_username</span><span class="p">,</span> <span class="n">passwd</span><span class="o">=</span><span class="n">kam_password</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="n">kam_database</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="sd">&quot;&quot;&quot;select pbx_id,address as pbx_host,db_host,db_username,db_password,domain_list,domain_list_hash,attr_list from dsip_multidomain_mapping join dr_gw_lists on dsip_multidomain_mapping.pbx_id=dr_gw_lists.id join dr_gateways on dr_gateways.gwid = dr_gw_lists.gwlist where enabled=1&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+            <span class="c1"># Store the PBX_ID as the key and the entire row as the value</span>
+            <span class="n">sources</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">row</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">sources</span></div>
+
+
+<span class="c1"># Will remove all of the fusionpbx domain data so that it can be rebuilt</span>
+<div class="viewcode-block" id="drop_fusionpbx_domains"><a class="viewcode-back" href="../../../dev/modules.html#modules.fusionpbx.fusionpbx_sync_functions.drop_fusionpbx_domains">[docs]</a><span class="k">def</span> <span class="nf">drop_fusionpbx_domains</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
+    <span class="c1"># PBX Domain Mapping Parameters</span>
+    <span class="n">pbx_domain_list</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">pbx_attr_list</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+
+    <span class="c1"># Kamailio Database Parameters</span>
+    <span class="n">kam_hostname</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;hostname&#39;</span><span class="p">]</span>
+    <span class="n">kam_username</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+    <span class="n">kam_password</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
+    <span class="n">kam_database</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]</span>
+
+    <span class="n">pbx_domain_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">pbx_domain_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">))))</span>
+    <span class="n">pbx_attr_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">pbx_attr_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">))))</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">kam_hostname</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">kam_username</span><span class="p">,</span> <span class="n">passwd</span><span class="o">=</span><span class="n">kam_password</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="n">kam_database</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pbx_domain_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DELETE FROM domain WHERE id IN(</span><span class="si">{}</span><span class="s2">)&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pbx_domain_list</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pbx_attr_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DELETE FROM domain_attrs WHERE id IN(</span><span class="si">{}</span><span class="s2">)&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pbx_attr_list</span><span class="p">))</span>
+
+        <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="sync_db"><a class="viewcode-back" href="../../../dev/modules.html#modules.fusionpbx.fusionpbx_sync_functions.sync_db">[docs]</a><span class="k">def</span> <span class="nf">sync_db</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">dest</span><span class="p">):</span>
+    <span class="c1"># FusionPBX Database Parameters</span>
+    <span class="n">pbx_id</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">pbx_host</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">fpbx_hostname</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">fpbx_username</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">fpbx_password</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">pbx_domain_list</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">pbx_attr_list</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">fpbx_database</span> <span class="o">=</span> <span class="s1">&#39;fusionpbx&#39;</span>
+
+    <span class="c1"># Kamailio Database Parameters</span>
+    <span class="n">kam_hostname</span> <span class="o">=</span> <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;hostname&#39;</span><span class="p">]</span>
+    <span class="n">kam_username</span> <span class="o">=</span> <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+    <span class="n">kam_password</span> <span class="o">=</span> <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
+    <span class="n">kam_database</span> <span class="o">=</span> <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]</span>
+
+    <span class="n">domain_id_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">attr_id_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Get a connection to Kamailio Server DB</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">kam_hostname</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">kam_username</span><span class="p">,</span> <span class="n">passwd</span><span class="o">=</span><span class="n">kam_password</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="n">kam_database</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="c1"># Delete existing domain for the pbx</span>
+    <span class="n">pbx_domain_list_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">pbx_domain_list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pbx_domain_list_str</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pbx_domain_list_str</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;delete from domain where id in (</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pbx_domain_list_str</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">pbx_domain_list</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="c1"># Trying connecting to PostgresSQL database using a Trust releationship first</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dbname</span><span class="o">=</span><span class="n">fpbx_database</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">fpbx_username</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="n">fpbx_hostname</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">fpbx_password</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">conn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connection to FusionPBX:</span><span class="si">{}</span><span class="s2"> database was successful&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fpbx_hostname</span><span class="p">))</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;select domain_name from v_domains where domain_enabled=&#39;true&#39;&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">rows</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+            <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">domain_name_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;insert ignore into domain (id,domain,did,last_modified) values (null,</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">,NOW())&quot;&quot;&quot;</span><span class="p">,</span>
+                          <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;row count </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">rowcount</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">rowcount</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                        <span class="sd">&quot;&quot;&quot;SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME IN(&#39;domain&#39;) ORDER BY FIND_IN_SET(TABLE_NAME, &#39;domain&#39;)&quot;&quot;&quot;</span><span class="p">)</span>
+                    <span class="n">rows</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+                    <span class="n">domain_id_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+                <span class="c1"># Delete all domain_attrs for the domain first</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;delete from domain_attrs where did=</span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="sd">&quot;&quot;&quot;insert ignore into domain_attrs (id,did,name,type,value,last_modified) values (null,%s,&#39;pbx_ip&#39;,2,%s,NOW())&quot;&quot;&quot;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pbx_host</span><span class="p">))</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="sd">&quot;&quot;&quot;insert ignore into domain_attrs (id,did,name,type,value,last_modified) values (null,%s,&#39;pbx_type&#39;,2,%s,NOW())&quot;&quot;&quot;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dSIPMultiDomainMapping</span><span class="o">.</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">TYPE_FUSIONPBX</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="sd">&quot;&quot;&quot;insert ignore into domain_attrs (id,did,name,type,value,last_modified) values (null,%s,&#39;created_by&#39;,2,%s,NOW())&quot;&quot;&quot;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pbx_id</span><span class="p">))</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="sd">&quot;&quot;&quot;insert ignore into domain_attrs (id,did,name,type,value,last_modified) values (null,%s,&#39;domain_auth&#39;,2,%s,NOW())&quot;&quot;&quot;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;passthru&#39;</span><span class="p">))</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="sd">&quot;&quot;&quot;insert ignore into domain_attrs (id,did,name,type,value,last_modified) values (null,%s,&#39;pbx_list&#39;,2,%s,NOW())&quot;&quot;&quot;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pbx_id</span><span class="p">))</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="sd">&quot;&quot;&quot;insert ignore into domain_attrs (id,did,name,type,value,last_modified) values (null,%s,&#39;description&#39;,2,%s,NOW())&quot;&quot;&quot;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;notes:&#39;</span><span class="p">))</span>
+                <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">domain_name_str</span> <span class="o">+=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">domain_id_list</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+            <span class="c1"># Convert to a string seperated by commas</span>
+            <span class="n">domain_id_list</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">domain_id_list</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">pbx_domain_list</span><span class="p">:</span>  <span class="c1"># if empty string then this is the first set of domains</span>
+                <span class="n">pbx_domain_list</span> <span class="o">=</span> <span class="n">domain_id_list</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># adding to an existing list of domains</span>
+                <span class="n">pbx_domain_list</span> <span class="o">=</span> <span class="n">pbx_domain_list</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">domain_id_list</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[sync_db] String of domains: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain_name_str</span><span class="p">))</span>
+
+            <span class="c1"># Create Hash of the string</span>
+            <span class="n">domain_name_str_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">domain_name_str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[sync_db] Hashed String of domains: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain_name_str_hash</span><span class="p">))</span>
+
+            <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                <span class="sd">&quot;&quot;&quot;update dsip_multidomain_mapping set domain_list=%s, domain_list_hash=%s,syncstatus=1, lastsync=NOW(),syncerror=&#39;&#39; where pbx_id=%s&quot;&quot;&quot;</span><span class="p">,</span>
+                <span class="p">(</span><span class="n">pbx_domain_list</span><span class="p">,</span> <span class="n">domain_name_str_hash</span><span class="p">,</span> <span class="n">pbx_id</span><span class="p">))</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;update dsip_multidomain_mapping set syncstatus=0, lastsync=NOW(), syncerror=</span><span class="si">%s</span><span class="s2"> where pbx_id=</span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
+                  <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">pbx_id</span><span class="p">))</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="c1"># Remove lock file</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;./.sync-lock&quot;</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="reloadkam"><a class="viewcode-back" href="../../../dev/modules.html#modules.fusionpbx.fusionpbx_sync_functions.reloadkam">[docs]</a><span class="k">def</span> <span class="nf">reloadkam</span><span class="p">(</span><span class="n">kamcmd_path</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># subprocess.call([&#39;kamcmd&#39; ,&#39;permissions.addressReload&#39;])</span>
+        <span class="c1"># subprocess.call([&#39;kamcmd&#39;,&#39;drouting.reload&#39;])</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="n">kamcmd_path</span><span class="p">,</span> <span class="s1">&#39;domain.reload&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="update_nginx"><a class="viewcode-back" href="../../../dev/modules.html#modules.fusionpbx.fusionpbx_sync_functions.update_nginx">[docs]</a><span class="k">def</span> <span class="nf">update_nginx</span><span class="p">(</span><span class="n">sources</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Updating Nginx&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Connect to docker</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">docker</span><span class="o">.</span><span class="n">from_env</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">client</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Got handle to docker&quot;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="c1"># If there isn&#39;t any FusionPBX sources then just shutdown the container</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">containers</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">container</span> <span class="ow">in</span> <span class="n">containers</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">container</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;dsiprouter-nginx&quot;</span><span class="p">:</span>
+                    <span class="c1"># Stop the container</span>
+                    <span class="n">container</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+                    <span class="n">container</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopped nginx container&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;./.sync-lock&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+    <span class="c1"># Create the Nginx file</span>
+
+    <span class="n">serverList</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+        <span class="n">serverList</span> <span class="o">+=</span> <span class="s2">&quot;server &quot;</span> <span class="o">+</span> <span class="n">safeUriToHost</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">source</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;:443;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="c1"># print(serverList)</span>
+    <span class="n">script_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+    <span class="c1"># print(script_dir)</span>
+
+    <span class="nb">input</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">script_dir</span> <span class="o">+</span> <span class="s2">&quot;/dsiprouter.nginx.tpl&quot;</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">script_dir</span> <span class="o">+</span> <span class="s2">&quot;/dsiprouter.nginx&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;##SERVERLIST##&quot;</span><span class="p">,</span> <span class="n">serverList</span><span class="p">))</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">input</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># Check if dsiprouter-nginx is running. If so, reload nginx</span>
+
+    <span class="n">containers</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;past container list&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">container</span> <span class="ow">in</span> <span class="n">containers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">container</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;dsiprouter-nginx&quot;</span><span class="p">:</span>
+            <span class="c1"># Execute a command to reload nginx</span>
+            <span class="n">container</span><span class="o">.</span><span class="n">exec_run</span><span class="p">(</span><span class="s2">&quot;nginx -s reload&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reloaded nginx&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+    <span class="c1"># Start the container if one is not running</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;trying to create a container&quot;</span><span class="p">)</span>
+        <span class="n">host_volume_path</span> <span class="o">=</span> <span class="n">script_dir</span> <span class="o">+</span> <span class="s2">&quot;/dsiprouter.nginx&quot;</span>
+        <span class="n">html_volume_path</span> <span class="o">=</span> <span class="n">script_dir</span> <span class="o">+</span> <span class="s2">&quot;/html&quot;</span>
+        <span class="n">cert_volume_path</span> <span class="o">=</span> <span class="n">script_dir</span> <span class="o">+</span> <span class="s2">&quot;/certs&quot;</span>
+        <span class="c1"># host_volume_path = script_dir</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">host_volume_path</span><span class="p">)</span>
+        <span class="c1"># remove the container with a name of dsiprouter-nginx to avoid conflicts if it already exists</span>
+        <span class="n">containerList</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s1">&#39;dsiprouter-nginx&#39;</span><span class="p">)</span>
+        <span class="n">containerFound</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">containerList</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;dsiprouter-nginx&quot;</span><span class="p">:</span>
+                <span class="n">containerFound</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">containerFound</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dsiprouter-nginx found...about to remove it and recreate&quot;</span><span class="p">)</span>
+            <span class="n">container</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dsiprouter-nginx&#39;</span><span class="p">)</span>
+            <span class="n">container</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="s1">&#39;nginx:latest&#39;</span><span class="p">,</span>
+                              <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dsiprouter-nginx&quot;</span><span class="p">,</span>
+                              <span class="n">ports</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;80/tcp&#39;</span><span class="p">:</span> <span class="s1">&#39;80/tcp&#39;</span><span class="p">,</span> <span class="s1">&#39;443/tcp&#39;</span><span class="p">:</span> <span class="s1">&#39;443/tcp&#39;</span><span class="p">},</span>
+                              <span class="n">volumes</span><span class="o">=</span><span class="p">{</span>
+                                  <span class="n">host_volume_path</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;bind&#39;</span><span class="p">:</span> <span class="s1">&#39;/etc/nginx/conf.d/default.conf&#39;</span><span class="p">,</span> <span class="s1">&#39;mode&#39;</span><span class="p">:</span> <span class="s1">&#39;rw&#39;</span><span class="p">},</span>
+                                  <span class="n">html_volume_path</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;bind&#39;</span><span class="p">:</span> <span class="s1">&#39;/etc/nginx/html&#39;</span><span class="p">,</span> <span class="s1">&#39;mode&#39;</span><span class="p">:</span> <span class="s1">&#39;rw&#39;</span><span class="p">},</span>
+                                  <span class="n">cert_volume_path</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;bind&#39;</span><span class="p">:</span> <span class="s1">&#39;/etc/ssl/certs&#39;</span><span class="p">,</span> <span class="s1">&#39;mode&#39;</span><span class="p">:</span> <span class="s1">&#39;rw&#39;</span><span class="p">}</span>
+                              <span class="p">},</span>
+                              <span class="n">detach</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;created a container&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;./.sync-lock&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="sync_needed"><a class="viewcode-back" href="../../../dev/modules.html#modules.fusionpbx.fusionpbx_sync_functions.sync_needed">[docs]</a><span class="k">def</span> <span class="nf">sync_needed</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">dest</span><span class="p">):</span>
+    <span class="c1"># FusionPBX Database Parameters</span>
+    <span class="n">pbx_id</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">pbx_host</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">fpbx_hostname</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">fpbx_username</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">fpbx_password</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">pbx_domain_list</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">pbx_domain_list_hash</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">pbx_attr_list</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+    <span class="n">fpbx_database</span> <span class="o">=</span> <span class="s1">&#39;fusionpbx&#39;</span>
+
+    <span class="c1"># Kamailio Database Parameters</span>
+    <span class="n">kam_hostname</span> <span class="o">=</span> <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;hostname&#39;</span><span class="p">]</span>
+    <span class="n">kam_username</span> <span class="o">=</span> <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+    <span class="n">kam_password</span> <span class="o">=</span> <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
+    <span class="n">kam_database</span> <span class="o">=</span> <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]</span>
+
+    <span class="n">domain_id_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">attr_id_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">need_sync</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">fpbx_conn</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">fpbx_curs</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">kam_conn</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">kam_curs</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Trying connecting to the databases</span>
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="c1"># Get a connection to Kamailio Server DB</span>
+        <span class="n">kam_conn</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">kam_hostname</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">kam_username</span><span class="p">,</span> <span class="n">passwd</span><span class="o">=</span><span class="n">kam_password</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="n">kam_database</span><span class="p">)</span>
+        <span class="n">kam_curs</span> <span class="o">=</span> <span class="n">kam_conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">kam_curs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[sync_needed] Connection to Kamailio DB:</span><span class="si">{}</span><span class="s2"> database was successful&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kam_hostname</span><span class="p">))</span>
+
+        <span class="c1"># Get a connection to the FusionPBX Server</span>
+        <span class="n">fpbx_conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dbname</span><span class="o">=</span><span class="n">fpbx_database</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">fpbx_username</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="n">fpbx_hostname</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">fpbx_password</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fpbx_conn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[sync_needed] Connection to FusionPBX:</span><span class="si">{}</span><span class="s2"> database was successful&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fpbx_hostname</span><span class="p">))</span>
+        <span class="n">fpbx_curs</span> <span class="o">=</span> <span class="n">fpbx_conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">fpbx_curs</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;select domain_name from v_domains where domain_enabled=&#39;true&#39;&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">fpbx_curs</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">rows</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">domain_name_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+            <span class="c1"># Build a string that contains all of the domains</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+                <span class="n">domain_name_str</span> <span class="o">+=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[sync_needed] String of domains: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain_name_str</span><span class="p">))</span>
+
+            <span class="c1"># Create Hash of the string</span>
+            <span class="n">domain_name_str_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">domain_name_str</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[sync_needed] Hashed String of domains: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain_name_str_hash</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">domain_name_str_hash</span> <span class="o">==</span> <span class="n">pbx_domain_list_hash</span><span class="p">:</span>
+                <span class="c1"># Sync not needed.  Will update the syncstatus=2 to denote a domain change was not detected</span>
+                <span class="n">kam_curs</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;update dsip_multidomain_mapping set syncstatus=2, lastsync=NOW()&quot;&quot;&quot;</span><span class="p">)</span>
+                <span class="n">kam_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+                <span class="n">need_sync</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># No domains yet, so no need to sync</span>
+            <span class="n">kam_curs</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;update dsip_multidomain_mapping set syncstatus=3, lastsync=NOW()&quot;&quot;&quot;</span><span class="p">)</span>
+            <span class="n">kam_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="n">need_sync</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="n">need_sync</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">kam_conn</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="n">kam_curs</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;update dsip_multidomain_mapping set syncstatus=4, lastsync=NOW(),syncerror=&#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">())</span>
+            <span class="n">kam_conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">fpbx_conn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">fpbx_conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">fpbx_curs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">fpbx_curs</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">kam_curs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kam_curs</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">kam_conn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kam_conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="run_sync"><a class="viewcode-back" href="../../../dev/modules.html#modules.fusionpbx.fusionpbx_sync_functions.run_sync">[docs]</a><span class="k">def</span> <span class="nf">run_sync</span><span class="p">(</span><span class="n">settings</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Set the system where sync&#39;d data will be stored.</span>
+        <span class="c1"># The Kamailio DB in our case</span>
+
+        <span class="c1"># If already running - don&#39;t run</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;./.sync-lock&quot;</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Already running&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./.sync-lock&quot;</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="c1"># need to decrypt password if encrypted</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">KAM_DB_PASS</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="n">kam_password</span> <span class="o">=</span> <span class="n">AES_CTR</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">KAM_DB_PASS</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">kam_password</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">KAM_DB_PASS</span>
+
+        <span class="n">dest</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;hostname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">KAM_DB_HOST</span>
+        <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">KAM_DB_USER</span>
+        <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kam_password</span>
+        <span class="n">dest</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">KAM_DB_NAME</span>
+
+        <span class="c1"># Get the list of FusionPBX&#39;s that needs to be sync&#39;d</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="n">get_sources</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span>
+
+        <span class="c1"># Loop thru each FusionPBX system and start the sync</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sync_needed</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">dest</span><span class="p">):</span>
+                <span class="n">sync_db</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">dest</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[run_sync] No sync needed for source: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+
+        <span class="c1"># Reload Kamailio</span>
+        <span class="n">reloadkam</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">KAM_KAMCMD_PATH</span><span class="p">)</span>
+
+        <span class="c1"># Update Nginx configuration file for HTTP Provisioning and start docker container if we have FusionPBX systems</span>
+        <span class="c1"># update_nginx(sources[key])</span>
+        <span class="k">if</span> <span class="n">sources</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">sources</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sources</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="n">update_nginx</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="c1"># Remove lock file</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;./.sync-lock&quot;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright dOpenSource
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

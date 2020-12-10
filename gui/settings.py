@@ -9,17 +9,17 @@ DSIP_ID = 1
 DSIP_CLUSTER_ID = 1
 DSIP_CLUSTER_SYNC = False
 DSIP_PROTO = 'https'
-DSIP_PORT = 5000
+DSIP_PORT = '5000'
 DSIP_USERNAME = 'admin'
-DSIP_PASSWORD = 'admin'
-DSIP_API_TOKEN = 'admin'
+DSIP_PASSWORD = b'8b6024af48f57058846d3ba24d3ec68050c0941c4ec6a06e67c6aad124da505c6e97160d63fb911b144f1afad53d656635a91ed0d48f06bd874ff1b48049a2f88bd12b2358fff518e45dee577cb9c607d58d3b0f2bc112b0ac34c30663d16f78f16e7f5a03c01bd4a8df00bc28e00019180a11875cf464ed52d2eb175e4788bc'
+DSIP_API_TOKEN = b'2f757123fbe899fbf386548b75634e949a7790f1ee7b7fac7a469ee127e841a4db8dc79c9c2c334241bf3d1f81d6dd6db4bb513e4c4916f921212e242ca647f6e4a33505246e1719e656125c977a9dfb'
 DSIP_API_PROTO = 'https'
 DSIP_API_PORT = 5000
 DSIP_PRIV_KEY = '/etc/dsiprouter/privkey'
 DSIP_PID_FILE = '/var/run/dsiprouter/dsiprouter.pid'
 DSIP_UNIX_SOCK = '/var/run/dsiprouter/dsiprouter.sock'
 DSIP_IPC_SOCK = '/var/run/dsiprouter/ipc.sock'
-DSIP_IPC_PASS = 'admin'
+DSIP_IPC_PASS = b'd06038ac3ac211199be45e90310c9eed8e321f981a6f1ea4d562e29ef77a6b63430ceab08b3ebfa9cce4660cd11a915239732740f932b5b5888243c051929fd30b7fa071d22b46cae8d2940138df6a18'
 # dsiprouter logging settings
 # syslog level and facility values based on:
 # <http://www.nightmare.com/squirl/python-ext/misc/syslog.py>
@@ -30,9 +30,9 @@ DSIP_LOG_FACILITY = 18
 # dSIPRouter SSL settings
 # ssl key / cert are absolute paths
 # email for re-certification must match certs
-DSIP_SSL_KEY = ''
-DSIP_SSL_CERT = ''
-DSIP_SSL_EMAIL = ''
+DSIP_SSL_KEY = '/etc/dsiprouter/certs/dsiprouter.key'
+DSIP_SSL_CERT = '/etc/dsiprouter/certs/dsiprouter.crt'
+DSIP_SSL_EMAIL = 'admin@VI-Update'
 DSIP_CERTS_DIR = '/etc/dsiprouter/certs'
 
 # dSIPRouter internal settings
@@ -59,7 +59,7 @@ KAM_DB_TYPE = 'mysql'
 KAM_DB_PORT = '3306'
 KAM_DB_NAME = 'kamailio'
 KAM_DB_USER = 'kamailio'
-KAM_DB_PASS = 'kamailiorw'
+KAM_DB_PASS = b'd418827a9e48be90097cba6244cd65b4a71f872c653e1c6b0bc160f4cc9ba416f80746df3b8e4d6fa2ca4633d0c1b8267b8012fcf12f0adb44ee9082459c2d1e2f6a5e35a7315405801dd5147b068eab'
 
 KAM_KAMCMD_PATH = '/usr/sbin/kamcmd'
 KAM_CFG_PATH = '/etc/kamailio/kamailio.cfg'
@@ -100,9 +100,9 @@ FLOWROUTE_SECRET_KEY = ''
 FLOWROUTE_API_ROOT_URL = 'https://api.flowroute.com/v2'
 
 # updated dynamically! These values will be overwritten
-INTERNAL_IP_ADDR = '178.128.233.182'
-INTERNAL_IP_NET = '178.128.233.*'
-EXTERNAL_IP_ADDR = '178.128.233.182'
+INTERNAL_IP_ADDR = '67.205.140.139'
+INTERNAL_IP_NET = '67.205.140.*'
+EXTERNAL_IP_ADDR = '67.205.140.139'
 EXTERNAL_FQDN = 'sip.dsiprouter.org'
 
 # upload folder for files
@@ -113,7 +113,7 @@ UPLOAD_FOLDER = '/tmp'
 # The installer will update this
 # '' = other or native install
 # AWS = Amazon Web Services, GCP = Google Cloud Platform, AZURE = Microsoft Azure, DO = Digital Ocean, VULTR = Vultr Cloud
-CLOUD_PLATFORM = ''
+CLOUD_PLATFORM = 'DO'
 
 # email server config
 MAIL_SERVER = 'smtp.gmail.com'
@@ -122,7 +122,7 @@ MAIL_USE_TLS = True
 MAIL_USERNAME = ''
 MAIL_PASSWORD = ''
 MAIL_ASCII_ATTACHMENTS = False
-MAIL_DEFAULT_SENDER = 'dSIPRouter {}-{} <{}>'.format(str(DSIP_CLUSTER_ID), str(DSIP_ID), MAIL_USERNAME)
+MAIL_DEFAULT_SENDER = 'dSIPRouter 1-1 <>'.format(str(DSIP_CLUSTER_ID), str(DSIP_ID), MAIL_USERNAME)
 MAIL_DEFAULT_SUBJECT = 'dSIPRouter System Notification'
 
 # backup settings

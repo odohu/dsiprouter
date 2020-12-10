@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>util.security &mdash; dSIPRouter 0.64 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> dSIPRouter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.64
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/index.html">1.  User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../user/installing.html">1.2.1. Installing dSIPRouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/command_line_options.html">1.3.1. Command Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/configuring.html">1.4.1. Configuring dSIPRouter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../user/carrier_groups.html">1.4.1.1. Carrier Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../user/carrier_groups.html#adding-a-carrier">1.4.1.2. Adding a Carrier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../user/pbxs_and_endpoints.html">1.4.1.3. PBX(s) and Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../user/pbxs_and_endpoints.html#inbound-did-mapping">1.4.1.4. Inbound DID Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../user/domains.html">1.4.1.5. Adding a Domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../user/global_outbound_routes.html">1.4.1.6. Global Outbound Routes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/api.html">1.5.1. API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/use-cases.html">1.6.1. Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/resources.html">1.7.1. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/supported_configurations.html">1.8.1. Supported Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/troubleshooting.html">1.9.1. Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user/upgrade.html">1.10.1. Upgrading dSIPRouter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../user/upgrade_0.522_to_0.523.html">1.10.1.1.1. Upgrade dSIPRouter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../user/upgrade_0.50_to_0.51.html">1.10.1.2.1. Upgrade dSIPRouter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../user/upgrade_0.621_to_0.63.html">1.10.1.3.1. Upgrade dSIPRouter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/index.html">2.  Developer Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/database.html">2.1.  database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/dsiprouter.html">2.2.  dsiprouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/globals.html">2.3.  globals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/modules.html">2.4.  modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/settings.html">2.5.  settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/shared.html">2.6.  shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/sysloginit.html">2.7.  sysloginit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/util.html">2.8.  util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../routes/index.html">3.  Routes Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../routes/routes.html">3.1.  routes</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">dSIPRouter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>util.security</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for util.security</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">hashlib</span><span class="o">,</span> <span class="nn">binascii</span><span class="o">,</span> <span class="nn">string</span>
+<span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
+<span class="kn">from</span> <span class="nn">Crypto.Util</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">Crypto.Random</span> <span class="kn">import</span> <span class="n">get_random_bytes</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">exc</span> <span class="k">as</span> <span class="n">sql_exceptions</span>
+<span class="kn">from</span> <span class="nn">shared</span> <span class="kn">import</span> <span class="n">updateConfig</span>
+<span class="kn">import</span> <span class="nn">settings</span>
+
+<span class="c1">#</span>
+<span class="c1"># Notes on storing credentials:</span>
+<span class="c1">#</span>
+<span class="c1"># best practice is to store hash and salt of the credentials</span>
+<span class="c1"># when plaintext access is mandatory we can use symmetric encryption</span>
+<span class="c1"># when sending encrypted data over the net asymmetric encryption is preferred</span>
+<span class="c1"># if credentials need to be stored/accessed in a python module, they need encoded/decoded</span>
+<span class="c1">#</span>
+
+<div class="viewcode-block" id="urandomChars"><a class="viewcode-back" href="../../dev/util.html#util.security.urandomChars">[docs]</a><span class="k">def</span> <span class="nf">urandomChars</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return printable characters from urandom</span>
+
+<span class="sd">    :param length:  number of bytes to return</span>
+<span class="sd">    :type length:   int</span>
+<span class="sd">    :return:        random characters</span>
+<span class="sd">    :rtype:         str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">chars</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">chars</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">urandom</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">chars</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">)])</span></div>
+
+<div class="viewcode-block" id="Credentials"><a class="viewcode-back" href="../../dev/util.html#util.security.Credentials">[docs]</a><span class="k">class</span> <span class="nc">Credentials</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Wrapper class for credential management functions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">HASH_LEN</span> <span class="o">=</span> <span class="mi">64</span>
+    <span class="n">HASH_ENCODED_LEN</span> <span class="o">=</span> <span class="mi">128</span>
+    <span class="n">SALT_LEN</span> <span class="o">=</span> <span class="mi">64</span>
+    <span class="n">SALT_ENCODED_LEN</span> <span class="o">=</span> <span class="mi">128</span>
+    <span class="n">CREDS_MAX_LEN</span> <span class="o">=</span> <span class="mi">64</span>
+    <span class="n">HASHED_CREDS_ENCODED_MAX_LEN</span> <span class="o">=</span> <span class="mi">256</span>
+    <span class="n">AESCTR_CREDS_ENCODED_MAX_LEN</span> <span class="o">=</span> <span class="mi">160</span>
+
+<div class="viewcode-block" id="Credentials.hashCreds"><a class="viewcode-back" href="../../dev/util.html#util.security.Credentials.hashCreds">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">hashCreds</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span> <span class="n">salt</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Hash credentials using pbkdf2_hmac with sha512 algo</span>
+
+<span class="sd">        :param creds:   byte string to hash</span>
+<span class="sd">        :type creds:    bytes|str</span>
+<span class="sd">        :param salt:    salt to hash creds with as hex encoded byte string</span>
+<span class="sd">        :type salt:     bytes|str</span>
+<span class="sd">        :return:        hash+salt as hex encoded byte string</span>
+<span class="sd">        :rtype:         bytes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="n">creds</span> <span class="o">=</span> <span class="n">creds</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">salt</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">salt</span> <span class="o">=</span> <span class="n">get_random_bytes</span><span class="p">(</span><span class="n">Credentials</span><span class="o">.</span><span class="n">SALT_LEN</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">salt</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+                <span class="n">salt</span> <span class="o">=</span> <span class="n">salt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+            <span class="n">salt</span> <span class="o">=</span> <span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">salt</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">salt</span><span class="p">)</span> <span class="o">!=</span> <span class="n">Credentials</span><span class="o">.</span><span class="n">SALT_LEN</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Salt must be </span><span class="si">{}</span><span class="s1"> bytes long&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Credentials</span><span class="o">.</span><span class="n">SALT_LEN</span><span class="p">)))</span>
+
+        <span class="nb">hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">pbkdf2_hmac</span><span class="p">(</span><span class="s1">&#39;sha512&#39;</span><span class="p">,</span> <span class="n">creds</span><span class="p">,</span> <span class="n">salt</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span><span class="nb">hash</span><span class="p">)</span><span class="o">+</span><span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span><span class="n">salt</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Credentials.setCreds"><a class="viewcode-back" href="../../dev/util.html#util.security.Credentials.setCreds">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">setCreds</span><span class="p">(</span><span class="n">dsip_creds</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">api_creds</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">kam_creds</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">mail_creds</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ipc_creds</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set secure credentials, either by hashing or encrypting\n</span>
+<span class="sd">        Values must be within size limit and empty values are ignored\n</span>
+
+<span class="sd">        :param dsip_creds:      dsiprouter admin password as byte string</span>
+<span class="sd">        :type dsip_creds:       bytes|str</span>
+<span class="sd">        :param api_creds:       dsiprouter api token as byte string</span>
+<span class="sd">        :type api_creds:        bytes|str</span>
+<span class="sd">        :param kam_creds:       kamailio db password as byte string</span>
+<span class="sd">        :type kam_creds:        bytes|str</span>
+<span class="sd">        :param mail_creds:      dsiprouter mail password as byte string</span>
+<span class="sd">        :type mail_creds:       bytes|str</span>
+<span class="sd">        :param ipc_creds:       dsiprouter ipc connection password as byte string</span>
+<span class="sd">        :type ipc_creds:        bytes|str</span>
+<span class="sd">        :return:                None</span>
+<span class="sd">        :rtype:                 None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dsip_creds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dsip_creds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">Credentials</span><span class="o">.</span><span class="n">CREDS_MAX_LEN</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;dsiprouter credentials must be </span><span class="si">{}</span><span class="s1"> bytes or less&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Credentials</span><span class="o">.</span><span class="n">CREDS_MAX_LEN</span><span class="p">)))</span>
+            <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;DSIP_PASSWORD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Credentials</span><span class="o">.</span><span class="n">hashCreds</span><span class="p">(</span><span class="n">dsip_creds</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">api_creds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">api_creds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">Credentials</span><span class="o">.</span><span class="n">CREDS_MAX_LEN</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;kamailio credentials must be </span><span class="si">{}</span><span class="s1"> bytes or less&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Credentials</span><span class="o">.</span><span class="n">CREDS_MAX_LEN</span><span class="p">)))</span>
+            <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;DSIP_API_TOKEN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">AES_CTR</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">api_creds</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kam_creds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kam_creds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">Credentials</span><span class="o">.</span><span class="n">CREDS_MAX_LEN</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;kamailio credentials must be </span><span class="si">{}</span><span class="s1"> bytes or less&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Credentials</span><span class="o">.</span><span class="n">CREDS_MAX_LEN</span><span class="p">)))</span>
+            <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;KAM_DB_PASS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">AES_CTR</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">kam_creds</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mail_creds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mail_creds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">Credentials</span><span class="o">.</span><span class="n">CREDS_MAX_LEN</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;mail credentials must be </span><span class="si">{}</span><span class="s1"> bytes or less&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Credentials</span><span class="o">.</span><span class="n">CREDS_MAX_LEN</span><span class="p">)))</span>
+            <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;MAIL_PASSWORD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">AES_CTR</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">mail_creds</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ipc_creds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ipc_creds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">Credentials</span><span class="o">.</span><span class="n">CREDS_MAX_LEN</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;mail credentials must be </span><span class="si">{}</span><span class="s1"> bytes or less&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Credentials</span><span class="o">.</span><span class="n">CREDS_MAX_LEN</span><span class="p">)))</span>
+            <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;DSIP_IPC_PASS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">AES_CTR</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">ipc_creds</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">LOAD_SETTINGS_FROM</span> <span class="o">==</span> <span class="s1">&#39;file&#39;</span><span class="p">:</span>
+            <span class="n">updateConfig</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">settings</span><span class="o">.</span><span class="n">LOAD_SETTINGS_FROM</span> <span class="o">==</span> <span class="s1">&#39;db&#39;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">database</span> <span class="kn">import</span> <span class="n">SessionLoader</span><span class="p">,</span> <span class="n">DummySession</span>
+            <span class="n">db</span> <span class="o">=</span> <span class="n">DummySession</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">db</span> <span class="o">=</span> <span class="n">SessionLoader</span><span class="p">()</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="s1">&#39;update dsip_settings set </span><span class="si">{}</span><span class="s1"> where DSIP_ID=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">=:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fields</span><span class="o">.</span><span class="n">keys</span><span class="p">()]),</span> <span class="n">settings</span><span class="o">.</span><span class="n">DSIP_ID</span><span class="p">),</span>
+                    <span class="n">fields</span><span class="p">)</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">except</span> <span class="n">sql_exceptions</span><span class="o">.</span><span class="n">SQLAlchemyError</span><span class="p">:</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+                <span class="k">raise</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span></div></div>
+
+<div class="viewcode-block" id="AES_CTR"><a class="viewcode-back" href="../../dev/util.html#util.security.AES_CTR">[docs]</a><span class="k">class</span> <span class="nc">AES_CTR</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Wrapper class for pycrypto&#39;s AES256 functions in AES_CTR mode</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">BLOCK_SIZE</span> <span class="o">=</span> <span class="mi">16</span>
+    <span class="n">KEY_SIZE</span> <span class="o">=</span> <span class="mi">32</span>
+
+<div class="viewcode-block" id="AES_CTR.genKey"><a class="viewcode-back" href="../../dev/util.html#util.security.AES_CTR.genKey">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">genKey</span><span class="p">(</span><span class="n">keyfile</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">DSIP_PRIV_KEY</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">keyfile</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">get_random_bytes</span><span class="p">(</span><span class="n">AES_CTR</span><span class="o">.</span><span class="n">KEY_SIZE</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AES_CTR.encrypt"><a class="viewcode-back" href="../../dev/util.html#util.security.AES_CTR.encrypt">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">encrypt</span><span class="p">(</span><span class="n">byte_string</span><span class="p">,</span> <span class="n">key_file</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">DSIP_PRIV_KEY</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">byte_string</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">byte_string</span> <span class="o">=</span> <span class="n">byte_string</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">key_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">AES_CTR</span><span class="o">.</span><span class="n">KEY_SIZE</span><span class="p">)</span>
+
+        <span class="n">iv</span> <span class="o">=</span> <span class="n">get_random_bytes</span><span class="p">(</span><span class="n">AES_CTR</span><span class="o">.</span><span class="n">BLOCK_SIZE</span><span class="p">)</span>
+        <span class="n">ctr</span> <span class="o">=</span> <span class="n">Counter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">AES_CTR</span><span class="o">.</span><span class="n">BLOCK_SIZE</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> <span class="n">initial_value</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span><span class="n">iv</span><span class="p">),</span> <span class="mi">16</span><span class="p">))</span>
+        <span class="n">aes</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CTR</span><span class="p">,</span> <span class="n">counter</span><span class="o">=</span><span class="n">ctr</span><span class="p">)</span>
+        <span class="n">cipher_bytes</span> <span class="o">=</span> <span class="n">iv</span> <span class="o">+</span> <span class="n">aes</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">byte_string</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span><span class="n">cipher_bytes</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AES_CTR.decrypt"><a class="viewcode-back" href="../../dev/util.html#util.security.AES_CTR.decrypt">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">decrypt</span><span class="p">(</span><span class="n">byte_string</span><span class="p">,</span> <span class="n">key_file</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">DSIP_PRIV_KEY</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">byte_string</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">byte_string</span> <span class="o">=</span> <span class="n">byte_string</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="n">byte_string</span> <span class="o">=</span> <span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">byte_string</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">key_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">AES_CTR</span><span class="o">.</span><span class="n">KEY_SIZE</span><span class="p">)</span>
+
+        <span class="n">iv</span> <span class="o">=</span> <span class="n">byte_string</span><span class="p">[:</span><span class="n">AES_CTR</span><span class="o">.</span><span class="n">BLOCK_SIZE</span><span class="p">]</span>
+        <span class="n">ctr</span> <span class="o">=</span> <span class="n">Counter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">AES_CTR</span><span class="o">.</span><span class="n">BLOCK_SIZE</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> <span class="n">initial_value</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span><span class="n">iv</span><span class="p">),</span> <span class="mi">16</span><span class="p">))</span>
+        <span class="n">aes</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CTR</span><span class="p">,</span> <span class="n">counter</span><span class="o">=</span><span class="n">ctr</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">aes</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">byte_string</span><span class="p">[</span><span class="n">AES_CTR</span><span class="o">.</span><span class="n">BLOCK_SIZE</span><span class="p">:])</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright dOpenSource
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
