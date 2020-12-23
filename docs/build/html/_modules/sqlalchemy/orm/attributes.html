@@ -29,7 +29,6 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -111,19 +110,19 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../dev/index.html">2.  Developer Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../dev/database.html">2.1.  database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../dev/dsiprouter.html">2.2.  dsiprouter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../dev/globals.html">2.3.  globals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../dev/modules.html">2.4.  modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../dev/settings.html">2.5.  settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../dev/shared.html">2.6.  shared</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../dev/sysloginit.html">2.7.  sysloginit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../dev/util.html">2.8.  util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/index.html"> Developer Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/database.html">1.  database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/dsiprouter.html">2.  dsiprouter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/globals.html">3.  globals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/modules.html">4.  modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/settings.html">5.  settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/shared.html">6.  shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/sysloginit.html">7.  sysloginit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dev/util.html">8.  util</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../routes/index.html">3.  Routes Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../routes/routes.html">3.1.  routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../routes/index.html">2.  Routes Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../routes/routes.html">2.1.  routes</a></li>
 </ul>
 </li>
 </ul>
@@ -368,6 +367,13 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">expression</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The SQL expression object represented by this</span>
+<span class="sd">        :class:`.QueryableAttribute`.</span>
+
+<span class="sd">        This will typically be an instance of a :class:`.ColumnElement`</span>
+<span class="sd">        subclass representing a column expression.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">comparator</span><span class="o">.</span><span class="n">__clause_element__</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__clause_element__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
